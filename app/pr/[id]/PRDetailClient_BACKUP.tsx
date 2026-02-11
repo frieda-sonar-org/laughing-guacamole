@@ -130,12 +130,12 @@ export default function PRDetailClient() {
   const prData = {
     id: params.id,
     number: 35,
-    title: 'Add user management API with authentication & session handling',
-    version: 'b4c8e2f',
-    description: 'Implements comprehensive user management REST API with CRUD operations, JWT-based authentication, and database session management. Includes TypeScript models, SQL migrations, middleware for validation and auth, and full test coverage. Documentation updated with API specifications and usage examples.',
+    title: 'SC-37654 Fix Mise',
+    version: 2,
+    description: 'This pull request addresses the critical issue found in the Mise configuration handler. The changes include refactoring the error handling logic, improving validation for configuration parameters, and adding comprehensive unit tests to ensure stability. Additional updates were made to the documentation to reflect the new behavior.',
     status: 'passed',
-    author: 'backend-team',
-    timestamp: '2 hours ago'
+    author: 'sonarqubecloud',
+    timestamp: '51 minutes ago'
   };
 
   return (
@@ -373,12 +373,12 @@ export default function PRDetailClient() {
                 <div className="page-metadata">
                   <span className="metadata-item">Private</span>
                   <span className="metadata-separator"></span>
-                  <span className="metadata-item">1,245 New Lines</span>
+                  <span className="metadata-item">0 New Lines</span>
                   <span className="metadata-separator"></span>
-                  <span className="metadata-item">Last analysis 2 hours ago</span>
+                  <span className="metadata-item">Last analysis 1 month ago</span>
                   <span className="metadata-separator"></span>
                   <span className="metadata-item">
-                    b4c8e2f
+                    d785751e
                   </span>
                   <span className="metadata-separator"></span>
                   <span className="metadata-item">
@@ -531,7 +531,7 @@ export default function PRDetailClient() {
                 <div className="files-groups">
                   <div className="files-groups-header">
                   <span>Groups</span>
-                  <span className="groups-count">0 / 4</span>
+                  <span className="groups-count">0 / 3</span>
                 </div>
 
                 {/* Group 1: CI/CD Workflow */}
@@ -558,7 +558,7 @@ export default function PRDetailClient() {
                         }}
                         onClick={() => setShowGroupFiles(!showGroupFiles)}
                       >
-                        Backend API Endpoints
+                        CI/CD Workflow Refactoring
                       </div>
                       {showGroupFiles && (
                         <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
@@ -570,7 +570,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/api/routes/users.ts
+                            github/actions/npm-setup/action.yml
                           </div>
                           <div style={{
                             marginBottom: '4px',
@@ -580,17 +580,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/api/routes/auth.ts
-                          </div>
-                          <div style={{
-                            marginBottom: '4px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            src/api/controllers/userController.ts
+                            .github/workflows/build.yml
                           </div>
                           <div style={{
                             overflow: 'hidden',
@@ -599,7 +589,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/api/middleware/validation.ts
+                            .github/workflows/deploy.yml
                           </div>
                         </div>
                       )}
@@ -649,7 +639,7 @@ export default function PRDetailClient() {
                         }}
                         onClick={() => setShowGroupFiles2(!showGroupFiles2)}
                       >
-                        Database & Models
+                        API Authentication & Security
                       </div>
                       {showGroupFiles2 && (
                         <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
@@ -661,17 +651,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/models/User.ts
-                          </div>
-                          <div style={{
-                            marginBottom: '4px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            src/models/Session.ts
+                            src/middleware/auth.ts
                           </div>
                           <div style={{
                             overflow: 'hidden',
@@ -680,7 +660,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            migrations/20260211_add_user_sessions.sql
+                            src/api/refresh-token.ts
                           </div>
                         </div>
                       )}
@@ -730,119 +710,18 @@ export default function PRDetailClient() {
                         }}
                         onClick={() => setShowGroupFiles3(!showGroupFiles3)}
                       >
-                        Authentication & Security
+                        Database Schema Migration
                       </div>
                       {showGroupFiles3 && (
                         <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
                           <div style={{
-                            marginBottom: '4px',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/services/authService.ts
-                          </div>
-                          <div style={{
-                            marginBottom: '4px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            src/utils/jwt.ts
-                          </div>
-                          <div style={{
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            src/middleware/authMiddleware.ts
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    <button
-                      className="file-group-toggle"
-                      onClick={() => setShowGroupFiles3(!showGroupFiles3)}
-                      style={{ marginLeft: '8px', flexShrink: 0, marginTop: '2px' }}
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        style={{
-                          transform: showGroupFiles3 ? 'rotate(0deg)' : 'rotate(-90deg)',
-                          transition: 'transform 0.2s'
-                        }}
-                      >
-                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Group 4: Testing & Documentation */}
-                <div className="file-group">
-                  <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    {groupReviewed3 ? (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                        <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      </svg>
-                    ) : (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
-                        <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                      </svg>
-                    )}
-                    <div style={{ flex: 1, overflow: 'hidden' }}>
-                      <div
-                        className="file-group-name"
-                        style={{
-                          fontWeight: 500,
-                          marginBottom: showGroupFiles3 ? '8px' : '0',
-                          cursor: 'pointer',
-                          color: groupReviewed3 ? '#4CAF50' : 'inherit'
-                        }}
-                        onClick={() => setShowGroupFiles3(!showGroupFiles3)}
-                      >
-                        Testing & Documentation
-                      </div>
-                      {showGroupFiles3 && (
-                        <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
-                          <div style={{
-                            marginBottom: '4px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            tests/api/users.test.ts
-                          </div>
-                          <div style={{
-                            marginBottom: '4px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            README.md
-                          </div>
-                          <div style={{
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            docs/API.md
+                            migrations/20260119_add_user_preferences.sql
                           </div>
                         </div>
                       )}
@@ -875,12 +754,12 @@ export default function PRDetailClient() {
                 <div className="file-change-card">
                   <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
-                      <h3 style={{ margin: 0 }}>Backend API Endpoints</h3>
+                      <h3 style={{ margin: 0 }}>CI/CD Workflow Refactoring with NPM Setup</h3>
                       <span className="needs-review-badge">Needs review</span>
                       <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
-                        <span className="file-count">4 files</span>
-                        <span className="additions">+487</span>
-                        <span className="deletions">-23</span>
+                        <span className="file-count">3 files</span>
+                        <span className="additions">+25</span>
+                        <span className="deletions">-9</span>
                       </div>
                     </div>
                     <button
@@ -906,8 +785,8 @@ export default function PRDetailClient() {
                   {showFileChanges && (
                     <>
                       <div className="file-change-description">
-                        <p>Implemented RESTful API endpoints for user management including CRUD operations, authentication routes, and request validation middleware. Uses Express.js router with modular controller pattern and JWT-based authentication.</p>
-                        <p className="review-focus"><strong>Review Focus:</strong> Verify proper error handling, input validation, and authentication checks on protected routes. Ensure API responses follow REST conventions and TypeScript types are correctly defined. Check for SQL injection vulnerabilities and proper password hashing.</p>
+                        <p>Refactored GitHub Actions workflows by extracting npm setup logic into a reusable composite action and integrating it into existing workflows.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Review the new composite action for proper node/npm configuration, caching strategy, and dependencies. Verify the workflow changes correctly reference the new action and that removed setup steps are adequately replaced.</p>
                       </div>
 
                       {/* Code Diff */}
@@ -926,7 +805,7 @@ export default function PRDetailClient() {
                         >
                           <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                         </svg>
-                        <span className="code-file-path">src/api/routes/users.ts</span>
+                        <span className="code-file-path">github/actions/npm-setup/action.yml</span>
                         <button className="copy-button">
                           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
                             <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
@@ -935,15 +814,15 @@ export default function PRDetailClient() {
                         </button>
                       </div>
                       <div className="code-diff-stats">
-                        <span className="additions">+215</span>
+                        <span className="additions">+22</span>
                         <span className="deletions">-0</span>
                         <span className="separator">•</span>
                         <span className="coverage-badge">
-                          <CoverageIndicator percentage={92.8} size={14} />
-                          Coverage: 92.8%
+                          <CoverageIndicator percentage={86.7} size={14} />
+                          Coverage: 86.7%
                         </span>
                         <span className="separator">•</span>
-                        <span className="duplication">Duplications: 1.2%</span>
+                        <span className="duplication">Duplications: 0.0%</span>
                         <span className="separator">•</span>
                         <span className="issues">Issues: 0</span>
                         <button
@@ -973,7 +852,7 @@ export default function PRDetailClient() {
                             </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
-                              <span className="code-keyword">import</span> {'{ Router }'} <span className="code-keyword">from</span> <span className="code-string">'express'</span>;
+                              <span className="code-keyword">name:</span> NPM Setup
                             </td>
                           </tr>
                           {renderNewCommentInput('file1-line1')}
@@ -984,7 +863,7 @@ export default function PRDetailClient() {
                             </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
-                              <span className="code-keyword">import</span> * <span className="code-keyword">as</span> userController <span className="code-keyword">from</span> <span className="code-string">'../controllers/userController'</span>;
+                              <span className="code-keyword">description:</span> Action to configure NPM registry with Artifactory token from Vault
                             </td>
                           </tr>
                           {renderNewCommentInput('file1-line2')}
@@ -994,9 +873,7 @@ export default function PRDetailClient() {
                               <AddCommentButton />
                             </td>
                             <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-keyword">import</span> {'{ authMiddleware }'} <span className="code-keyword">from</span> <span className="code-string">'../../middleware/authMiddleware'</span>;
-                            </td>
+                            <td className="line-content"></td>
                           </tr>
                           {renderNewCommentInput('file1-line3')}
                           <tr className="code-line added has-comment">
@@ -1006,7 +883,7 @@ export default function PRDetailClient() {
                             </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
-                              <span className="code-keyword">import</span> {'{ validateUser }'} <span className="code-keyword">from</span> <span className="code-string">'../middleware/validation'</span>;
+                              <span className="code-keyword">runs:</span>
                             </td>
                           </tr>
                           {renderNewCommentInput('file1-line4')}
@@ -1016,14 +893,14 @@ export default function PRDetailClient() {
                             <td colSpan={2}>
                               <div className="inline-comment-container">
                                 <div className="inline-comment">
-                                  <div className="inline-comment-avatar">M</div>
+                                  <div className="inline-comment-avatar">F</div>
                                   <div className="inline-comment-content">
                                     <div className="inline-comment-header">
-                                      <span className="inline-comment-author">Michael Chen</span>
-                                      <span className="inline-comment-date">2 hours ago</span>
+                                      <span className="inline-comment-author">Frieda Handoko</span>
+                                      <span className="inline-comment-date">22/12/2025, 03:30</span>
                                     </div>
                                     <p className="inline-comment-text">
-                                      Should we also import the rate limiting middleware here? User endpoints might need protection against brute force.
+                                      This line probably only makes sense if it goes to line 55
                                     </p>
                                     <div className="inline-comment-actions">
                                       <button className="inline-comment-action">Reply</button>
@@ -1040,7 +917,9 @@ export default function PRDetailClient() {
                               <AddCommentButton />
                             </td>
                             <td className="line-sign">+</td>
-                            <td className="line-content"></td>
+                            <td className="line-content">
+                              <span className="code-indent">  </span><span className="code-keyword">using:</span> <span className="code-string">"composite"</span>
+                            </td>
                           </tr>
                           {renderNewCommentInput('file1-line5')}
                           <tr className="code-line added">
@@ -1050,7 +929,7 @@ export default function PRDetailClient() {
                             </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
-                              <span className="code-keyword">const</span> router = <span className="code-function">Router</span>();
+                              <span className="code-indent">  </span><span className="code-keyword">steps:</span>
                             </td>
                           </tr>
                           {renderNewCommentInput('file1-line6')}
@@ -1060,62 +939,11 @@ export default function PRDetailClient() {
                               <AddCommentButton />
                             </td>
                             <td className="line-sign">+</td>
-                            <td className="line-content"></td>
+                            <td className="line-content">
+                              <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Get vault secrets
+                            </td>
                           </tr>
                           {renderNewCommentInput('file1-line7')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line8')}>8</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line8')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-comment">// Get all users with pagination</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line8')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line9')}>9</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line9')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              router.<span className="code-function">get</span>(<span className="code-string">'/'</span>, authMiddleware, userController.getAllUsers);
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line9')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line10')}>10</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line10')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content"></td>
-                          </tr>
-                          {renderNewCommentInput('file1-line10')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line11')}>11</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line11')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-comment">// Get user by ID</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line11')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line12')}>12</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line12')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              router.<span className="code-function">get</span>(<span className="code-string">'/:id'</span>, authMiddleware, userController.getUserById);
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line12')}
                         </tbody>
                       </table>
                     </div>
