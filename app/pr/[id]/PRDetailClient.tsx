@@ -47,9 +47,10 @@ export default function PRDetailClient() {
   const [groupReviewed3, setGroupReviewed3] = useState(false);
   const [groupReviewed4, setGroupReviewed4] = useState(false);
 
-  // Reviewer's Note FAB state
+  // Author's Note FAB state
   const [showReviewerNote, setShowReviewerNote] = useState(true);
   const [aiQuestion, setAiQuestion] = useState('');
+  const [authorNoteTab, setAuthorNoteTab] = useState('context'); // 'context' or 'conversation'
 
   const handleLineClick = (lineId: string) => {
     setActiveCommentLine(lineId);
@@ -2104,13 +2105,13 @@ export default function PRDetailClient() {
         </main>
       </div>
 
-      {/* Floating Action Button - Reviewer's Note */}
+      {/* Floating Action Button - Author's Note */}
       <div className="fab-container">
-        {/* Reviewer's Note Panel */}
+        {/* Author's Note Panel */}
         {showReviewerNote && (
           <div className="reviewer-note-panel">
             <div className="reviewer-note-header">
-              <h3 className="reviewer-note-title">Reviewer's Note</h3>
+              <h3 className="reviewer-note-title">Author's Note</h3>
               <button
                 className="reviewer-note-collapse"
                 onClick={() => setShowReviewerNote(false)}
@@ -2123,41 +2124,69 @@ export default function PRDetailClient() {
             </div>
 
             <div className="reviewer-note-content">
-              {/* Summary Section */}
-              <div className="reviewer-note-section">
-                <h4 className="reviewer-note-section-title">Summary</h4>
-                <p className="reviewer-note-text">
-                  This PR introduces a comprehensive user management system with REST API endpoints, JWT-based authentication, and database session handling. The implementation includes 4 main components: Backend API routes (users & auth), Database models & migrations, Authentication services with JWT utilities, and comprehensive test coverage with updated documentation.
-                </p>
-                <p className="reviewer-note-text" style={{ marginTop: '8px' }}>
-                  <strong>Key Changes:</strong> Added 15 new files across backend infrastructure, implementing CRUD operations for user management, secure authentication flow with token refresh, SQL migration for session storage, and middleware for request validation and authorization.
-                </p>
+              {/* Tab Navigation */}
+              <div className="author-note-tabs">
+                <button
+                  className={`author-note-tab ${authorNoteTab === 'context' ? 'active' : ''}`}
+                  onClick={() => setAuthorNoteTab('context')}
+                >
+                  Context
+                </button>
+                <button
+                  className={`author-note-tab ${authorNoteTab === 'conversation' ? 'active' : ''}`}
+                  onClick={() => setAuthorNoteTab('conversation')}
+                >
+                  Original Conversation
+                </button>
               </div>
 
-              {/* Progress Section */}
-              <div className="reviewer-note-section">
-                <h4 className="reviewer-note-section-title">PR Progress</h4>
-                <div className="pr-progress-stats">
-                  <div className="progress-stat">
-                    <span className="progress-label">Files Reviewed</span>
-                    <span className="progress-value">0 / 15</span>
+              {/* Context Tab Content */}
+              {authorNoteTab === 'context' && (
+                <>
+                  <div className="reviewer-note-section">
+                    <p className="reviewer-note-text">
+                      This PR introduces a comprehensive user management system with REST API endpoints, JWT-based authentication, and database session handling. The implementation includes 4 main components: Backend API routes (users & auth), Database models & migrations, Authentication services with JWT utilities, and comprehensive test coverage with updated documentation.
+                    </p>
+                    <p className="reviewer-note-text" style={{ marginTop: '8px' }}>
+                      <strong>Key Changes:</strong> Added 15 new files across backend infrastructure, implementing CRUD operations for user management, secure authentication flow with token refresh, SQL migration for session storage, and middleware for request validation and authorization.
+                    </p>
                   </div>
-                  <div className="progress-stat">
-                    <span className="progress-label">Groups Completed</span>
-                    <span className="progress-value">0 / 4</span>
+
+                  {/* Progress Section */}
+                  <div className="reviewer-note-section">
+                    <h4 className="reviewer-note-section-title">PR Progress</h4>
+                    <div className="pr-progress-stats">
+                      <div className="progress-stat">
+                        <span className="progress-label">Files Reviewed</span>
+                        <span className="progress-value">0 / 15</span>
+                      </div>
+                      <div className="progress-stat">
+                        <span className="progress-label">Groups Completed</span>
+                        <span className="progress-value">0 / 4</span>
+                      </div>
+                      <div className="progress-stat">
+                        <span className="progress-label">Est. Time Left</span>
+                        <span className="progress-value">~45 min</span>
+                      </div>
+                    </div>
+                    <div className="progress-bar-container">
+                      <div className="progress-bar">
+                        <div className="progress-bar-fill" style={{ width: '0%' }}></div>
+                      </div>
+                      <span className="progress-percentage">0% Complete</span>
+                    </div>
                   </div>
-                  <div className="progress-stat">
-                    <span className="progress-label">Estimated Time Left</span>
-                    <span className="progress-value">~45 min</span>
-                  </div>
+                </>
+              )}
+
+              {/* Original Conversation Tab Content */}
+              {authorNoteTab === 'conversation' && (
+                <div className="reviewer-note-section">
+                  <p className="reviewer-note-text" style={{ fontStyle: 'italic', color: 'var(--color-text-tertiary)' }}>
+                    Original conversation content will appear here.
+                  </p>
                 </div>
-                <div className="progress-bar-container">
-                  <div className="progress-bar">
-                    <div className="progress-bar-fill" style={{ width: '0%' }}></div>
-                  </div>
-                  <span className="progress-percentage">0% Complete</span>
-                </div>
-              </div>
+              )}
 
               {/* AI Question Section */}
               <div className="reviewer-note-section">
@@ -2200,14 +2229,14 @@ export default function PRDetailClient() {
         <button
           className="fab-button"
           onClick={() => setShowReviewerNote(!showReviewerNote)}
-          title="Reviewer's Note"
+          title="Author's Note"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '8px' }}>
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="16" x2="12" y2="12"/>
             <line x1="12" y1="8" x2="12.01" y2="8"/>
           </svg>
-          <span>Reviewer's Note</span>
+          <span>Author's Note</span>
         </button>
       </div>
     </div>
