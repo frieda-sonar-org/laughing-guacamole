@@ -14,7 +14,6 @@ export default function PRDetailClient() {
   const [showGroupFiles, setShowGroupFiles] = useState(false);
   const [showGroupFiles2, setShowGroupFiles2] = useState(false);
   const [showGroupFiles3, setShowGroupFiles3] = useState(false);
-  const [showGroupFiles4, setShowGroupFiles4] = useState(false);
   const [showFileChanges, setShowFileChanges] = useState(true);
   const [showFileChanges2, setShowFileChanges2] = useState(true);
   const [showFileChanges3, setShowFileChanges3] = useState(true);
@@ -45,7 +44,6 @@ export default function PRDetailClient() {
   const [groupReviewed1, setGroupReviewed1] = useState(false);
   const [groupReviewed2, setGroupReviewed2] = useState(false);
   const [groupReviewed3, setGroupReviewed3] = useState(false);
-  const [groupReviewed4, setGroupReviewed4] = useState(false);
 
   // Author's Note FAB state
   const [showReviewerNote, setShowReviewerNote] = useState(true);
@@ -800,92 +798,6 @@ export default function PRDetailClient() {
                         fill="currentColor"
                         style={{
                           transform: showGroupFiles3 ? 'rotate(0deg)' : 'rotate(-90deg)',
-                          transition: 'transform 0.2s'
-                        }}
-                      >
-                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Group 4: Testing & Documentation */}
-                <div className="file-group">
-                  <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    {groupReviewed4 ? (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                        <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      </svg>
-                    ) : (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
-                        <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                      </svg>
-                    )}
-                    <div style={{ flex: 1, overflow: 'hidden' }}>
-                      <div
-                        className="file-group-name"
-                        style={{
-                          fontWeight: 500,
-                          marginBottom: showGroupFiles4 ? '8px' : '0',
-                          cursor: 'pointer',
-                          color: groupReviewed4 ? '#4CAF50' : 'inherit'
-                        }}
-                        onClick={() => {
-                          const element = document.getElementById('group-backend-api');
-                          if (element) {
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          }
-                        }}
-                      >
-                        Testing & Documentation
-                      </div>
-                      {showGroupFiles4 && (
-                        <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
-                          <div style={{
-                            marginBottom: '4px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            tests/api/users.test.ts
-                          </div>
-                          <div style={{
-                            marginBottom: '4px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            README.md
-                          </div>
-                          <div style={{
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            docs/API.md
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    <button
-                      className="file-group-toggle"
-                      onClick={() => setShowGroupFiles4(!showGroupFiles4)}
-                      style={{ marginLeft: '8px', flexShrink: 0, marginTop: '2px' }}
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        style={{
-                          transform: showGroupFiles4 ? 'rotate(0deg)' : 'rotate(-90deg)',
                           transition: 'transform 0.2s'
                         }}
                       >
