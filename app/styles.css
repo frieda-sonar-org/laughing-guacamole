@@ -2336,6 +2336,54 @@ body {
     border: 1px solid var(--color-border-secondary);
 }
 
+/* Conversation Thread */
+.conversation-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+}
+
+.conversation-comment {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 8px;
+}
+
+.conversation-comment .comment-body {
+    padding-left: 52px;
+}
+
+.conversation-comment .comment-body p {
+    margin: 0 0 8px 0;
+}
+
+.conversation-comment .comment-body p:last-child {
+    margin-bottom: 0;
+}
+
+.conversation-comment .comment-body ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.conversation-comment .comment-body li {
+    margin: 4px 0;
+}
+
+.conversation-comment .comment-body code {
+    background-color: rgba(159, 169, 237, 0.1);
+    color: var(--color-accent-primary);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 13px;
+}
+
 /* FAB Button */
 .fab-button {
     background: linear-gradient(135deg, var(--color-btn-primary-bg) 0%, var(--color-btn-primary-hover) 100%);

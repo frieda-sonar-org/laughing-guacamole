@@ -2136,7 +2136,7 @@ export default function PRDetailClient() {
                   className={`author-note-tab ${authorNoteTab === 'conversation' ? 'active' : ''}`}
                   onClick={() => setAuthorNoteTab('conversation')}
                 >
-                  Original Conversation
+                  Conversations
                 </button>
               </div>
 
@@ -2179,12 +2179,79 @@ export default function PRDetailClient() {
                 </>
               )}
 
-              {/* Original Conversation Tab Content */}
+              {/* Conversations Tab Content */}
               {authorNoteTab === 'conversation' && (
-                <div className="reviewer-note-section">
-                  <p className="reviewer-note-text" style={{ fontStyle: 'italic', color: 'var(--color-text-tertiary)' }}>
-                    Original conversation content will appear here.
-                  </p>
+                <div className="conversation-thread">
+                  {/* Comment 1 */}
+                  <div className="conversation-comment">
+                    <div className="comment-header">
+                      <div className="comment-avatar">
+                        <div className="comment-avatar-text">JD</div>
+                      </div>
+                      <div className="comment-meta">
+                        <div className="comment-author">jdoe</div>
+                        <div className="comment-timestamp">2 hours ago</div>
+                      </div>
+                    </div>
+                    <div className="comment-body">
+                      <p>I've implemented the user management API with JWT authentication. The main changes include:</p>
+                      <ul>
+                        <li>REST endpoints for user CRUD operations</li>
+                        <li>JWT-based authentication with refresh tokens</li>
+                        <li>Database session storage</li>
+                        <li>Comprehensive test coverage</li>
+                      </ul>
+                      <p>Ready for review! 🚀</p>
+                    </div>
+                  </div>
+
+                  {/* Comment 2 */}
+                  <div className="conversation-comment">
+                    <div className="comment-header">
+                      <div className="comment-avatar">
+                        <div className="comment-avatar-text">AS</div>
+                      </div>
+                      <div className="comment-meta">
+                        <div className="comment-author">asmith</div>
+                        <div className="comment-timestamp">1 hour ago</div>
+                      </div>
+                    </div>
+                    <div className="comment-body">
+                      <p>Great work! Quick question about the token refresh flow - are we storing the refresh tokens in the database or using Redis for better performance?</p>
+                    </div>
+                  </div>
+
+                  {/* Comment 3 */}
+                  <div className="conversation-comment">
+                    <div className="comment-header">
+                      <div className="comment-avatar">
+                        <div className="comment-avatar-text">JD</div>
+                      </div>
+                      <div className="comment-meta">
+                        <div className="comment-author">jdoe</div>
+                        <div className="comment-timestamp">45 minutes ago</div>
+                      </div>
+                    </div>
+                    <div className="comment-body">
+                      <p>Currently using database storage for simplicity. We can migrate to Redis in a follow-up PR if we need better performance. Added a TODO comment in <code>auth.ts</code> to track this.</p>
+                    </div>
+                  </div>
+
+                  {/* Comment 4 */}
+                  <div className="conversation-comment">
+                    <div className="comment-header">
+                      <div className="comment-avatar">
+                        <div className="comment-avatar-text">MK</div>
+                      </div>
+                      <div className="comment-meta">
+                        <div className="comment-author">mkumar</div>
+                        <div className="comment-timestamp">30 minutes ago</div>
+                      </div>
+                    </div>
+                    <div className="comment-body">
+                      <p>Looks good overall! Can you add rate limiting to the auth endpoints? We should prevent brute force attacks on the login endpoint.</p>
+                    </div>
+                  </div>
                 </div>
               )}
 
