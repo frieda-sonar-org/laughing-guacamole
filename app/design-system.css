@@ -36,17 +36,17 @@
   /* === ACCENT COLORS === */
 
   /* Primary Accent */
-  --color-accent-primary: #4b9fd8; /* Blue */
-  --color-accent-primary-hover: #6bb8ec;
-  --color-accent-primary-active: #85c5f0;
+  --color-accent-primary: #9FA9ED; /* Purple-Blue */
+  --color-accent-primary-hover: #BDC6FF;
+  --color-accent-primary-active: #C5C7F1;
 
   /* Secondary Accent - Blue (icons, links) */
-  --color-accent-secondary: #4b9fd8;
-  --color-accent-secondary-hover: #6bb8ec;
+  --color-accent-secondary: #9FA9ED;
+  --color-accent-secondary-hover: #BDC6FF;
 
   /* Link colors */
-  --color-link: #4b9fd8;
-  --color-link-hover: #6bb8ec;
+  --color-link: #9FA9ED;
+  --color-link-hover: #BDC6FF;
 
 
   /* === STATUS COLORS === */
@@ -109,10 +109,10 @@
   /* === BUTTON COLORS === */
 
   /* Primary Button */
-  --color-btn-primary-bg: #4b9fd8;
-  --color-btn-primary-hover: #6bb8ec;
-  --color-btn-primary-active: #3a8dd0;
-  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #9FA9ED;
+  --color-btn-primary-hover: #BDC6FF;
+  --color-btn-primary-active: #8892E8;
+  --color-btn-primary-text: #2A2F40;
 
   /* Secondary Button */
   --color-btn-secondary-bg: #3c4248;

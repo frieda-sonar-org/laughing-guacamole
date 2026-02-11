@@ -394,11 +394,35 @@ export default function PRDetailClient() {
                   </div> */}
                 </div>
               </div>
-              <div style={{ position: 'relative' }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center', position: 'relative' }}>
+                {/* View on GitHub Button */}
+                <button
+                  className="btn-view-github"
+                  title="This project is bound to GitHub"
+                  onClick={() => window.open('https://github.com', '_blank')}
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '6px' }}>
+                    <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                  View on GitHub
+                </button>
+
+                {/* Review changes Button */}
                 <button className="btn-review-changes" onClick={() => setShowReviewModal(!showReviewModal)}>
                   Review changes
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style={{ marginLeft: '6px' }}>
                     <path d="M6 8L2 4h8L6 8z"/>
+                  </svg>
+                </button>
+
+                {/* Star Button */}
+                <button
+                  className="btn-star"
+                  title="Add this project to favorites"
+                  onClick={() => console.log('Add to favorites')}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                   </svg>
                 </button>
 
@@ -408,7 +432,7 @@ export default function PRDetailClient() {
                   <div className="review-modal-body">
                     <textarea
                       className="review-textarea"
-                      placeholder="Write your review"
+                      placeholder="Add a comment"
                       value={reviewComment}
                       onChange={(e) => setReviewComment(e.target.value)}
                     />
@@ -423,9 +447,6 @@ export default function PRDetailClient() {
                               <path d="M2 2h12v10H4l-2 2V2z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                             </svg>
                           </div>
-                          <div className="review-option-description">
-                            Submit general feedback without explicit approval.
-                          </div>
                         </div>
                       </div>
 
@@ -438,9 +459,6 @@ export default function PRDetailClient() {
                               <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="2"/>
                             </svg>
                           </div>
-                          <div className="review-option-description">
-                            Submit feedback that must be addressed before merging.
-                          </div>
                         </div>
                       </div>
 
@@ -452,9 +470,6 @@ export default function PRDetailClient() {
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" className="review-option-icon">
                               <path d="M3 8l3 3 7-7" stroke="currentColor" strokeWidth="2" fill="none"/>
                             </svg>
-                          </div>
-                          <div className="review-option-description">
-                            Submit feedback and approve merging these changes.
                           </div>
                         </div>
                       </div>
