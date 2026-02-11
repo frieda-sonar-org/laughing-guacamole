@@ -134,8 +134,8 @@ All colors are accessible via CSS custom properties:
     - Mark as reviewed functionality
 - ✅ **Author's Note Panel** (bottom-right FAB):
   - Opens by default when loading PR page
-  - Tab navigation: "Context" and "Conversations"
-  - Context tab:
+  - Tab navigation: "Summary" and "Conversations"
+  - Summary tab:
     - PR summary and key changes
     - Progress tracking (files reviewed, groups completed, estimated time)
     - Visual progress bar
@@ -337,10 +337,10 @@ Location: `app/pr/[id]/page.tsx`
    - Panel (appears above FAB when open):
      - Header with title "Author's Note" and collapse button
      - Tab navigation (`.author-note-tabs`):
-       - "Context" tab (default)
+       - "Summary" tab (default)
        - "Conversations" tab
      - Tab content:
-       - **Context tab**:
+       - **Summary tab**:
          - PR summary text (description and key changes)
          - PR Progress section with statistics and progress bar
          - Files reviewed, groups completed, estimated time left
@@ -516,10 +516,10 @@ We removed the Context tab (Description + Discussion) to focus solely on **code 
 
   - **Author's Note Panel Enhancement**:
     - Renamed "Reviewer's Note" to "Author's Note" throughout the application
-    - Added tab navigation with two tabs: "Context" and "Conversations"
+    - Added tab navigation with two tabs: "Summary" and "Conversations"
     - Reorganized content structure:
       - "Ask AI about this PR" section moved to bottom (below tab content)
-      - "Summary" section title removed (content now part of Context tab)
+      - "Summary" section title removed (content now part of Summary tab)
       - Changed "Estimated Time Left" to "Est. Time Left" to shorten the label
       - File groups default to collapsed state (file lists hidden by default)
     - Implemented "Conversations" tab with dummy conversation thread:

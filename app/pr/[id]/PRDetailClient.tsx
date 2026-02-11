@@ -2130,7 +2130,7 @@ export default function PRDetailClient() {
                   className={`author-note-tab ${authorNoteTab === 'context' ? 'active' : ''}`}
                   onClick={() => setAuthorNoteTab('context')}
                 >
-                  Context
+                  Summary
                 </button>
                 <button
                   className={`author-note-tab ${authorNoteTab === 'conversation' ? 'active' : ''}`}
