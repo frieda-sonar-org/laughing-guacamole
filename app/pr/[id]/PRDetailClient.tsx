@@ -14,6 +14,7 @@ export default function PRDetailClient() {
   const [showGroupFiles, setShowGroupFiles] = useState(false);
   const [showGroupFiles2, setShowGroupFiles2] = useState(false);
   const [showGroupFiles3, setShowGroupFiles3] = useState(false);
+  const [showGroupFiles4, setShowGroupFiles4] = useState(false);
   const [showFileChanges, setShowFileChanges] = useState(true);
   const [showFileChanges2, setShowFileChanges2] = useState(true);
   const [showFileChanges3, setShowFileChanges3] = useState(true);
@@ -44,6 +45,11 @@ export default function PRDetailClient() {
   const [groupReviewed1, setGroupReviewed1] = useState(false);
   const [groupReviewed2, setGroupReviewed2] = useState(false);
   const [groupReviewed3, setGroupReviewed3] = useState(false);
+  const [groupReviewed4, setGroupReviewed4] = useState(false);
+
+  // Reviewer's Note FAB state
+  const [showReviewerNote, setShowReviewerNote] = useState(true);
+  const [aiQuestion, setAiQuestion] = useState('');
 
   const handleLineClick = (lineId: string) => {
     setActiveCommentLine(lineId);
@@ -556,7 +562,12 @@ export default function PRDetailClient() {
                           cursor: 'pointer',
                           color: groupReviewed1 ? '#4CAF50' : 'inherit'
                         }}
-                        onClick={() => setShowGroupFiles(!showGroupFiles)}
+                        onClick={() => {
+                          const element = document.getElementById('group-backend-api');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
                       >
                         Backend API Endpoints
                       </div>
@@ -647,7 +658,12 @@ export default function PRDetailClient() {
                           cursor: 'pointer',
                           color: groupReviewed2 ? '#4CAF50' : 'inherit'
                         }}
-                        onClick={() => setShowGroupFiles2(!showGroupFiles2)}
+                        onClick={() => {
+                          const element = document.getElementById('group-database');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
                       >
                         Database & Models
                       </div>
@@ -728,7 +744,12 @@ export default function PRDetailClient() {
                           cursor: 'pointer',
                           color: groupReviewed3 ? '#4CAF50' : 'inherit'
                         }}
-                        onClick={() => setShowGroupFiles3(!showGroupFiles3)}
+                        onClick={() => {
+                          const element = document.getElementById('group-auth');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
                       >
                         Authentication & Security
                       </div>
@@ -790,7 +811,7 @@ export default function PRDetailClient() {
                 {/* Group 4: Testing & Documentation */}
                 <div className="file-group">
                   <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    {groupReviewed3 ? (
+                    {groupReviewed4 ? (
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
                         <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                         <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -805,15 +826,20 @@ export default function PRDetailClient() {
                         className="file-group-name"
                         style={{
                           fontWeight: 500,
-                          marginBottom: showGroupFiles3 ? '8px' : '0',
+                          marginBottom: showGroupFiles4 ? '8px' : '0',
                           cursor: 'pointer',
-                          color: groupReviewed3 ? '#4CAF50' : 'inherit'
+                          color: groupReviewed4 ? '#4CAF50' : 'inherit'
                         }}
-                        onClick={() => setShowGroupFiles3(!showGroupFiles3)}
+                        onClick={() => {
+                          const element = document.getElementById('group-backend-api');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
                       >
                         Testing & Documentation
                       </div>
-                      {showGroupFiles3 && (
+                      {showGroupFiles4 && (
                         <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
                           <div style={{
                             marginBottom: '4px',
@@ -849,7 +875,7 @@ export default function PRDetailClient() {
                     </div>
                     <button
                       className="file-group-toggle"
-                      onClick={() => setShowGroupFiles3(!showGroupFiles3)}
+                      onClick={() => setShowGroupFiles4(!showGroupFiles4)}
                       style={{ marginLeft: '8px', flexShrink: 0, marginTop: '2px' }}
                     >
                       <svg
@@ -858,7 +884,7 @@ export default function PRDetailClient() {
                         viewBox="0 0 16 16"
                         fill="currentColor"
                         style={{
-                          transform: showGroupFiles3 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transform: showGroupFiles4 ? 'rotate(0deg)' : 'rotate(-90deg)',
                           transition: 'transform 0.2s'
                         }}
                       >
@@ -872,7 +898,7 @@ export default function PRDetailClient() {
               {/* Right content - File changes */}
               <div className="files-content">
                 {/* File Change Card */}
-                <div className="file-change-card">
+                <div className="file-change-card" id="group-backend-api">
                   <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
                       <h3 style={{ margin: 0 }}>Backend API Endpoints</h3>
@@ -1470,7 +1496,7 @@ export default function PRDetailClient() {
                 </div>
 
                 {/* Second File Change Card - API Authentication Updates */}
-                <div className="file-change-card">
+                <div className="file-change-card" id="group-auth">
                   <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
                       <h3 style={{ margin: 0 }}>API Authentication & Security Enhancements</h3>
@@ -1829,7 +1855,7 @@ export default function PRDetailClient() {
                 </div>
 
                 {/* Third File Change Card - Database Migration Scripts */}
-                <div className="file-change-card">
+                <div className="file-change-card" id="group-database">
                   <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
                       <h3 style={{ margin: 0 }}>Database Schema Migration - User Preferences</h3>
@@ -2076,6 +2102,113 @@ export default function PRDetailClient() {
             </div>
             </div>
         </main>
+      </div>
+
+      {/* Floating Action Button - Reviewer's Note */}
+      <div className="fab-container">
+        {/* Reviewer's Note Panel */}
+        {showReviewerNote && (
+          <div className="reviewer-note-panel">
+            <div className="reviewer-note-header">
+              <h3 className="reviewer-note-title">Reviewer's Note</h3>
+              <button
+                className="reviewer-note-collapse"
+                onClick={() => setShowReviewerNote(false)}
+                title="Collapse"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="reviewer-note-content">
+              {/* Summary Section */}
+              <div className="reviewer-note-section">
+                <h4 className="reviewer-note-section-title">Summary</h4>
+                <p className="reviewer-note-text">
+                  This PR introduces a comprehensive user management system with REST API endpoints, JWT-based authentication, and database session handling. The implementation includes 4 main components: Backend API routes (users & auth), Database models & migrations, Authentication services with JWT utilities, and comprehensive test coverage with updated documentation.
+                </p>
+                <p className="reviewer-note-text" style={{ marginTop: '8px' }}>
+                  <strong>Key Changes:</strong> Added 15 new files across backend infrastructure, implementing CRUD operations for user management, secure authentication flow with token refresh, SQL migration for session storage, and middleware for request validation and authorization.
+                </p>
+              </div>
+
+              {/* Progress Section */}
+              <div className="reviewer-note-section">
+                <h4 className="reviewer-note-section-title">PR Progress</h4>
+                <div className="pr-progress-stats">
+                  <div className="progress-stat">
+                    <span className="progress-label">Files Reviewed</span>
+                    <span className="progress-value">0 / 15</span>
+                  </div>
+                  <div className="progress-stat">
+                    <span className="progress-label">Groups Completed</span>
+                    <span className="progress-value">0 / 4</span>
+                  </div>
+                  <div className="progress-stat">
+                    <span className="progress-label">Estimated Time Left</span>
+                    <span className="progress-value">~45 min</span>
+                  </div>
+                </div>
+                <div className="progress-bar-container">
+                  <div className="progress-bar">
+                    <div className="progress-bar-fill" style={{ width: '0%' }}></div>
+                  </div>
+                  <span className="progress-percentage">0% Complete</span>
+                </div>
+              </div>
+
+              {/* AI Question Section */}
+              <div className="reviewer-note-section">
+                <h4 className="reviewer-note-section-title">Ask AI about this PR</h4>
+                <div className="ai-search-container">
+                  <input
+                    type="text"
+                    className="ai-search-input"
+                    placeholder="e.g., 'What security concerns should I look for?' or 'Explain the authentication flow'"
+                    value={aiQuestion}
+                    onChange={(e) => setAiQuestion(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && aiQuestion.trim()) {
+                        console.log('AI Question:', aiQuestion);
+                        // TODO: Send to AI API
+                      }
+                    }}
+                  />
+                  <button
+                    className="ai-search-button"
+                    onClick={() => {
+                      if (aiQuestion.trim()) {
+                        console.log('AI Question:', aiQuestion);
+                        // TODO: Send to AI API
+                      }
+                    }}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="11" cy="11" r="8"/>
+                      <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* FAB Button */}
+        <button
+          className="fab-button"
+          onClick={() => setShowReviewerNote(!showReviewerNote)}
+          title="Reviewer's Note"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '8px' }}>
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <span>Reviewer's Note</span>
+        </button>
       </div>
     </div>
   );

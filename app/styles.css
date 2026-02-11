@@ -2083,3 +2083,280 @@ body {
 .summary-content {
     padding: 24px;
 }
+
+/* ========================================
+   Floating Action Button (FAB) - Reviewer's Note
+   ======================================== */
+
+.fab-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+/* Reviewer's Note Panel */
+.reviewer-note-panel {
+    background-color: var(--color-sidebar-bg);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 8px;
+    width: 420px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    animation: slideUpFade 0.3s ease-out;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reviewer-note-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--color-border-secondary);
+    position: sticky;
+    top: 0;
+    background-color: var(--color-sidebar-bg);
+    z-index: 1;
+}
+
+.reviewer-note-title {
+    font: var(--echoes-typography-heading-medium);
+    color: var(--color-text-primary);
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.reviewer-note-collapse {
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.reviewer-note-collapse:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+}
+
+.reviewer-note-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.reviewer-note-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.reviewer-note-section-title {
+    font: var(--echoes-typography-text-default-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.reviewer-note-text {
+    font: var(--echoes-typography-text-default);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Progress Stats */
+.pr-progress-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 12px;
+    background-color: var(--color-bg-primary);
+    border-radius: 6px;
+    border: 1px solid var(--color-border-secondary);
+}
+
+.progress-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.progress-label {
+    font: var(--echoes-typography-text-small);
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+.progress-value {
+    font: var(--echoes-typography-text-default-semibold);
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--color-bg-primary);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--color-border-secondary);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-btn-primary-bg) 0%, var(--color-btn-primary-hover) 100%);
+    transition: width 0.3s ease;
+}
+
+.progress-percentage {
+    font: var(--echoes-typography-text-small);
+    color: var(--color-text-muted);
+    font-size: 12px;
+    text-align: right;
+}
+
+/* AI Search Section */
+.ai-search-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.ai-search-input {
+    flex: 1;
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font: var(--echoes-typography-text-default);
+    color: var(--color-text-primary);
+    outline: none;
+    transition: all var(--transition-base);
+}
+
+.ai-search-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.ai-search-input:focus {
+    border-color: var(--color-accent-primary);
+    background-color: var(--color-bg-secondary);
+}
+
+.ai-search-button {
+    background-color: var(--color-btn-primary-bg);
+    color: var(--color-btn-primary-text);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-base);
+    flex-shrink: 0;
+}
+
+.ai-search-button:hover {
+    background-color: var(--color-btn-primary-hover);
+}
+
+.ai-helper-text {
+    font: var(--echoes-typography-text-small);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 0;
+    padding: 12px;
+    background-color: var(--color-bg-primary);
+    border-radius: 6px;
+    border: 1px solid var(--color-border-secondary);
+}
+
+/* FAB Button */
+.fab-button {
+    background: linear-gradient(135deg, var(--color-btn-primary-bg) 0%, var(--color-btn-primary-hover) 100%);
+    color: var(--color-btn-primary-text);
+    border: none;
+    border-radius: 28px;
+    padding: 14px 24px;
+    font: var(--echoes-typography-text-default-semibold);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(159, 169, 237, 0.3);
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.fab-button:hover {
+    background: linear-gradient(135deg, var(--color-btn-primary-hover) 0%, #C5C7F1 100%);
+    box-shadow: 0 6px 20px rgba(159, 169, 237, 0.4);
+    transform: translateY(-2px);
+}
+
+.fab-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(159, 169, 237, 0.3);
+}
+
+/* Responsive for FAB */
+@media (max-width: 768px) {
+    .fab-container {
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .reviewer-note-panel {
+        width: calc(100vw - 32px);
+        max-width: 420px;
+    }
+
+    .fab-button span {
+        display: none;
+    }
+
+    .fab-button {
+        border-radius: 50%;
+        padding: 16px;
+        width: 56px;
+        height: 56px;
+    }
+
+    .fab-button svg {
+        margin-right: 0 !important;
+    }
+}
