@@ -54,9 +54,10 @@ The design system uses a **custom color palette** inspired by SonarQube Cloud, d
 - `--color-text-muted`: #8a8f95
 
 #### Accent Colors
-- `--color-accent-primary`: #4b9fd8 (Blue - primary actions)
-- `--color-accent-secondary`: #4b9fd8 (Blue - icons, links)
-- `--color-link`: #4b9fd8
+- `--color-accent-primary`: #9FA9ED (Purple-Blue - primary actions)
+- `--color-accent-primary-hover`: #BDC6FF (Purple-Blue hover state)
+- `--color-accent-secondary`: #9FA9ED (Purple-Blue - icons, links)
+- `--color-link`: #9FA9ED
 
 #### Status Colors
 - `--color-success`: #4caf50 (Green - Passed status)
@@ -72,6 +73,12 @@ The design system uses a **custom color palette** inspired by SonarQube Cloud, d
 - `--color-border-primary`: #4d5463
 - `--color-border-secondary`: #3a3f45
 - `--color-border-subtle`: #2e3238
+
+#### Button Colors
+- `--color-btn-primary-bg`: #9FA9ED (Primary button background)
+- `--color-btn-primary-hover`: #BDC6FF (Primary button hover state)
+- `--color-btn-primary-text`: #2A2F40 (Primary button text color)
+- `--color-btn-primary-active`: #8892E8 (Primary button active state)
 
 ### Usage
 All colors are accessible via CSS custom properties:
@@ -109,20 +116,27 @@ All colors are accessible via CSS custom properties:
 - ✅ Page header with:
   - Breadcrumb navigation with PR number
   - Title with version
-  - "Review changes" button with dropdown modal
+  - Action buttons (left to right):
+    - "Review changes" button with dropdown modal (primary button)
+    - "View on GitHub" button with GitHub icon (secondary button, tooltip: "This project is bound to GitHub")
+    - "Star" icon button (secondary button, tooltip: "Add this project to favorites")
   - Review options: Comment, Request changes, Approve
+  - Sticky positioning when scrolling
 - ✅ **Files View** (default and only view):
-  - Left sidebar: Groups panel showing file groups
+  - Left sidebar: Groups panel showing file groups (sticky positioning)
   - Right content: File change cards with:
     - File metadata and statistics
     - Code diff viewer with syntax highlighting (YAML)
     - Inline comment capability (UI only)
     - Expandable/collapsible sections
+    - Mark as reviewed functionality
 
 **Design Notes**:
 - Context tab has been removed to focus solely on file review
 - All card components use transparent backgrounds with borders
 - Scrollbar always visible to prevent layout shift
+- Sticky positioning: Page header and file groups sidebar remain visible during scroll
+- Primary button color scheme: #9FA9ED background, #2A2F40 text, #BDC6FF hover
 
 ## Running the Project
 
@@ -200,20 +214,24 @@ Location: `app/pr/[id]/page.tsx`
 **Sections**:
 1. **Top Navigation & Sidebar** (same as homepage)
 
-2. **Page Header**
+2. **Page Header** (sticky positioning, top: 0)
    - Breadcrumb with PR number
    - Title with version hashtag
-   - "Review changes" button
+   - Action buttons:
+     - "Review changes" button (primary button with dropdown)
+     - "View on GitHub" button (secondary with GitHub icon)
+     - "Star" button (icon-only secondary)
 
 3. **Review Modal**
-   - Three review types with radio selection
-   - Comment textarea
-   - Submit button
+   - Three review types with radio selection (styled with primary button colors)
+   - Comment textarea (placeholder: "Add a comment")
+   - Submit button (primary button style)
 
 4. **Files View**
-   - Groups sidebar (left):
+   - Groups sidebar (left, sticky positioning at top: 152px):
      - Shows file groupings
      - Group names and file counts
+     - Scrollable with max-height constraint
    - File changes (right):
      - File metadata cards
      - Code diff tables with:
@@ -221,6 +239,7 @@ Location: `app/pr/[id]/page.tsx`
        - Add/remove indicators
        - Syntax-highlighted code
        - Inline comment buttons (on hover)
+     - "Mark as reviewed" button per file (primary button style)
 
 ## Styling Architecture
 
@@ -238,6 +257,14 @@ The application is **dark mode by default** with no light mode option:
 - Root variables set to dark colors
 - Body background and text color enforced
 - All components styled using dark theme colors
+
+### Sticky Positioning
+- **Page Header**: Uses `position: sticky` with `top: 0` relative to `.main-content` scroll container
+  - Stays at the top when scrolling through file changes
+  - `z-index: 100` ensures it stays above other content
+- **Files Groups Sidebar**: Uses `position: sticky` with `top: 152px` (page header height + padding)
+  - Remains visible while scrolling file changes
+  - Has `max-height: calc(100vh - 224px)` with `overflow-y: auto` for long file lists
 
 ### Responsive Design
 - Desktop: Full sidebar and all columns visible
@@ -305,6 +332,47 @@ We removed the Context tab (Description + Discussion) to focus solely on **code 
 
 ### Recent Changes
 
+- **February 11, 2026**:
+  - **UI Enhancement - Page Header Actions**:
+    - Added "View on GitHub" button with GitHub icon and tooltip ("This project is bound to GitHub")
+    - Added "Star" icon button with tooltip ("Add this project to favorites")
+    - Reordered action buttons: "Review changes" (leftmost), "View on GitHub", "Star"
+    - Changed review modal placeholder text from "Write your review" to "Add a comment"
+
+  - **Design System Update - Primary Button Color Scheme**:
+    - Updated primary button colors from blue (#4b9fd8) to purple-blue (#9FA9ED)
+    - Button text color: #2A2F40 (dark, high contrast on light purple background)
+    - Hover state: #BDC6FF (lighter purple-blue)
+    - Applied consistently across all primary buttons:
+      - "Review changes" button
+      - "Submit review" button
+      - "Mark as reviewed" button
+      - "Upgrade" button in sidebar
+    - Updated radio button selected state to match primary button colors (#9FA9ED background, #2A2F40 dot)
+
+  - **Sticky Positioning Implementation**:
+    - Made page header sticky (`position: sticky`, `top: 0`, `z-index: 100`)
+    - Made file groups sidebar sticky (`position: sticky`, `top: 152px`)
+    - Fixed gap before page header by removing negative margin and adding conditional padding removal
+    - Sticky positioning is relative to `.main-content` scroll container
+    - File groups sidebar has `max-height: calc(100vh - 224px)` with scrollable overflow
+
+  - **Button Style Standardization**:
+    - Audited all primary buttons across the application
+    - Ensured all primary buttons use design system CSS variables:
+      - `var(--color-btn-primary-bg)` for background
+      - `var(--color-btn-primary-text)` for text color
+      - `var(--color-btn-primary-hover)` for hover state
+    - Secondary buttons (View on GitHub, Star) use transparent background with border
+
+  - **Component Styling**:
+    - Added `.btn-view-github` styles (secondary button with GitHub icon)
+    - Added `.btn-star` styles (icon-only secondary button)
+    - Updated `.btn-review-changes` to use design system variables
+    - Updated `.btn-review-submit` to use design system variables
+    - Updated `.mark-reviewed-button` to use design system variables
+    - Updated `.review-option-radio.selected` to use primary button colors
+
 - **February 10, 2026**:
   - **UI Simplification**: Removed Context tab from PR detail page
     - Eliminated tab navigation (Context and Files tabs)
@@ -330,6 +398,6 @@ We removed the Context tab (Description + Discussion) to focus solely on **code 
 
 ---
 
-**Last Updated**: February 10, 2026
+**Last Updated**: February 11, 2026
 **Created by**: Claude Code Session
-**Status**: Active POC Development
+**Status**: Active POC Development - Ready for Real Implementation
