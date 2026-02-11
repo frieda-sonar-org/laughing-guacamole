@@ -124,12 +124,27 @@ All colors are accessible via CSS custom properties:
   - Sticky positioning when scrolling
 - ✅ **Files View** (default and only view):
   - Left sidebar: Groups panel showing file groups (sticky positioning)
+    - File groups collapsed by default (click chevron to expand file list)
+    - Click group name to anchor/scroll to that group's files
   - Right content: File change cards with:
     - File metadata and statistics
     - Code diff viewer with syntax highlighting (YAML)
     - Inline comment capability (UI only)
     - Expandable/collapsible sections
     - Mark as reviewed functionality
+- ✅ **Author's Note Panel** (bottom-right FAB):
+  - Opens by default when loading PR page
+  - Tab navigation: "Context" and "Conversations"
+  - Context tab:
+    - PR summary and key changes
+    - Progress tracking (files reviewed, groups completed, estimated time)
+    - Visual progress bar
+  - Conversations tab:
+    - GitHub-style comment thread
+    - Dummy conversation between team members
+    - Avatar placeholders, timestamps, formatted content
+  - "Ask AI about this PR" search input (bottom of panel)
+  - Collapsible panel (click collapse button or FAB to toggle)
 
 **Design Notes**:
 - Context tab has been removed to focus solely on file review
@@ -205,11 +220,17 @@ Location: `app/pr/[id]/page.tsx`
 **Client Component** (`'use client'`)
 
 **State Management**:
-- `showGroupFiles`: Toggle file list visibility
-- `showFileChanges`: Toggle file changes section
+- `showGroupFiles`, `showGroupFiles2`, `showGroupFiles3`, `showGroupFiles4`: Toggle file list visibility for each group (default: false/collapsed)
+- `showFileChanges`, `showFileChanges2`, `showFileChanges3`: Toggle file changes section visibility
 - `showReviewModal`: Control review dropdown visibility
 - `reviewType`: Selected review type (comment/request changes/approve)
 - `reviewComment`: Review comment text
+- `showReviewerNote`: Toggle Author's Note panel visibility (default: true/open)
+- `authorNoteTab`: Active tab in Author's Note panel ('context' or 'conversation')
+- `aiQuestion`: User input for AI search query
+- `fileExpanded1-6`: Individual file collapse states
+- `fileChecked1-6`: Individual file review status
+- `groupReviewed1-4`: Group review status (all files in group marked as reviewed)
 
 **Sections**:
 1. **Top Navigation & Sidebar** (same as homepage)
@@ -230,7 +251,8 @@ Location: `app/pr/[id]/page.tsx`
 4. **Files View**
    - Groups sidebar (left, sticky positioning at top: 152px):
      - Shows file groupings
-     - Group names and file counts
+     - Group names and file counts (clickable for navigation)
+     - Chevron buttons to toggle file list visibility
      - Scrollable with max-height constraint
    - File changes (right):
      - File metadata cards
@@ -240,6 +262,30 @@ Location: `app/pr/[id]/page.tsx`
        - Syntax-highlighted code
        - Inline comment buttons (on hover)
      - "Mark as reviewed" button per file (primary button style)
+
+5. **Author's Note Panel** (FAB - Floating Action Button)
+   - FAB button (bottom-right):
+     - Gradient purple-blue background
+     - Icon and text label: "Author's Note"
+     - Toggles panel visibility
+   - Panel (appears above FAB when open):
+     - Header with title "Author's Note" and collapse button
+     - Tab navigation (`.author-note-tabs`):
+       - "Context" tab (default)
+       - "Conversations" tab
+     - Tab content:
+       - **Context tab**:
+         - PR summary text (description and key changes)
+         - PR Progress section with statistics and progress bar
+         - Files reviewed, groups completed, estimated time left
+       - **Conversations tab**:
+         - Conversation thread (`.conversation-thread`)
+         - GitHub-style comments with avatars, authors, timestamps
+         - Support for formatted content (paragraphs, lists, inline code)
+     - AI Search section (bottom):
+       - "Ask AI about this PR" title
+       - Input field with search button
+       - Placeholder: "e.g., 'What security concerns should I look for?' or 'Explain the authentication flow'"
 
 ## Styling Architecture
 
@@ -271,6 +317,29 @@ The application is **dark mode by default** with no light mode option:
 - Tablet (< 1024px): Condensed navigation, smaller sidebar
 - Mobile (< 768px): Collapsible sidebar, simplified layout
 
+### Key CSS Classes - Author's Note Panel
+- `.fab-container`: Container for FAB button and panel
+- `.fab-button`: Floating action button with gradient background
+- `.reviewer-note-panel`: Main panel container (fixed positioning)
+- `.reviewer-note-header`: Panel header with title and collapse button
+- `.reviewer-note-content`: Panel content area with padding and flex layout
+- `.author-note-tabs`: Tab navigation container with border-bottom
+- `.author-note-tab`: Individual tab button (`.active` class for selected tab)
+- `.reviewer-note-section`: Content section with gap between items
+- `.reviewer-note-section-title`: Section heading (14px, semibold)
+- `.reviewer-note-text`: Body text (14px, secondary color)
+- `.pr-progress-stats`: Grid layout for progress statistics
+- `.progress-bar`: Visual progress indicator with gradient fill
+- `.conversation-thread`: Container for conversation comments
+- `.conversation-comment`: Individual comment card with border and padding
+- `.comment-header`: Comment header with avatar and metadata
+- `.comment-avatar-text`: Avatar placeholder with initials
+- `.comment-meta`: Author name and timestamp container
+- `.comment-body`: Comment content with formatted text support
+- `.ai-search-container`: AI search input and button container
+- `.ai-search-input`: Search input field
+- `.ai-search-button`: Search submit button (primary button style)
+
 ## Navigation Structure
 ```
 / (Pull Requests List)
@@ -300,9 +369,14 @@ We removed the Context tab (Description + Discussion) to focus solely on **code 
 - ✅ Click-through functionality for PR items
 - ✅ PR detail page with Files view
 - ✅ Code diff viewer with syntax highlighting
-- ✅ Collapsible file sections
+- ✅ Collapsible file sections and groups
 - ✅ Review modal with multiple review types
 - ✅ Client-side navigation
+- ✅ File and group review workflow (mark as reviewed)
+- ✅ Author's Note panel with Context and Conversations tabs
+- ✅ Progress tracking (files reviewed, groups completed, time estimation)
+- ✅ Conversation thread (dummy data)
+- ✅ Group anchor navigation (click group name to scroll to section)
 
 ### Planned Features
 - [ ] Additional pages (Summary, Issues, Dashboard, etc.)
@@ -310,9 +384,10 @@ We removed the Context tab (Description + Discussion) to focus solely on **code 
 - [ ] Real data integration (SonarQube API)
 - [ ] User authentication
 - [ ] Functional inline comment submission
-- [ ] File and group review workflow (mark as reviewed)
 - [ ] Coverage indicators with visual metrics
 - [ ] Real-time collaboration features
+- [ ] AI-powered PR analysis (Ask AI functionality)
+- [ ] Real conversation data integration
 
 ## Notes
 - All content is currently dummy data
@@ -372,6 +447,24 @@ We removed the Context tab (Description + Discussion) to focus solely on **code 
     - Updated `.btn-review-submit` to use design system variables
     - Updated `.mark-reviewed-button` to use design system variables
     - Updated `.review-option-radio.selected` to use primary button colors
+
+  - **Author's Note Panel Enhancement**:
+    - Renamed "Reviewer's Note" to "Author's Note" throughout the application
+    - Added tab navigation with two tabs: "Context" and "Conversations"
+    - Reorganized content structure:
+      - "Ask AI about this PR" section moved to bottom (below tab content)
+      - "Summary" section title removed (content now part of Context tab)
+      - Changed "Estimated Time Left" to "Est. Time Left" to shorten the label
+      - File groups default to collapsed state (file lists hidden by default)
+    - Implemented "Conversations" tab with dummy conversation thread:
+      - GitHub-style comment layout with avatar placeholders
+      - 4 conversation comments between team members (jdoe, asmith, mkumar)
+      - Realistic PR discussion: initial description, questions, responses, feedback
+      - Support for paragraphs, lists, inline code, and emojis
+      - Comment metadata: author names, timestamps (relative time)
+    - Added conversation thread styling (`.conversation-thread`, `.conversation-comment`)
+    - Reused existing comment styles (`.comment-header`, `.comment-avatar`, `.comment-meta`, `.comment-body`)
+    - Author's Note panel opens by default when loading PR detail page
 
 - **February 10, 2026**:
   - **UI Simplification**: Removed Context tab from PR detail page
