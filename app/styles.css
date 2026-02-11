@@ -294,16 +294,24 @@ body {
     position: relative;
 }
 
+/* Remove top padding when page-header is present (for sticky header pages) */
+.main-content:has(.page-header) {
+    padding-top: 0;
+}
+
 /* Page Header - Unified breadcrumb and title section */
 .page-header {
     background-color: var(--color-sidebar-bg);
     padding: 16px 24px;
-    margin: -24px -32px 24px -32px;
+    margin: 0 -32px 24px -32px;
     display: flex;
     flex-direction: column;
     gap: 0;
     border-bottom: 1px solid var(--color-border-secondary);
     min-height: 120px;
+    position: sticky;
+    top: 0; /* Sticks at the top of main-content scroll container */
+    z-index: 100;
 }
 
 .breadcrumb {
@@ -605,8 +613,8 @@ body {
 }
 
 .btn-review-changes {
-    background-color: #9FA9ED;
-    color: #2A2F40;
+    background-color: var(--color-btn-primary-bg);
+    color: var(--color-btn-primary-text);
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
@@ -619,7 +627,7 @@ body {
 }
 
 .btn-review-changes:hover {
-    background-color: #BDC6FF;
+    background-color: var(--color-btn-primary-hover);
 }
 
 /* View on GitHub Button */
@@ -997,6 +1005,11 @@ body {
     border-radius: 6px;
     padding: 16px;
     height: fit-content;
+    position: sticky;
+    top: 152px; /* page-header height (min-height 120px + padding 32px) */
+    align-self: flex-start;
+    max-height: calc(100vh - 224px); /* viewport - (top-nav 48px + sticky top 152px + margin 24px) */
+    overflow-y: auto;
 }
 
 .files-groups-header {
@@ -1307,8 +1320,8 @@ body {
 }
 
 .mark-reviewed-button {
-    background-color: #9FA9ED;
-    color: #2A2F40;
+    background-color: var(--color-btn-primary-bg);
+    color: var(--color-btn-primary-text);
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
@@ -1321,7 +1334,7 @@ body {
 }
 
 .mark-reviewed-button:hover {
-    background-color: #BDC6FF;
+    background-color: var(--color-btn-primary-hover);
 }
 
 .mark-needs-review-button {
@@ -1796,8 +1809,8 @@ body {
 }
 
 .review-option-radio.selected {
-    border-color: #4a90e2;
-    background-color: #4a90e2;
+    border-color: var(--color-btn-primary-bg);
+    background-color: var(--color-btn-primary-bg);
 }
 
 .review-option-radio.selected::after {
@@ -1805,7 +1818,7 @@ body {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--color-btn-primary-text);
 }
 
 .review-option-content {
@@ -1850,9 +1863,9 @@ body {
 }
 
 .btn-review-submit {
-    background-color: var(--color-accent-primary);
+    background-color: var(--color-btn-primary-bg);
     border: none;
-    color: var(--color-text-primary);
+    color: var(--color-btn-primary-text);
     padding: 8px 16px;
     border-radius: 6px;
     cursor: pointer;
@@ -1864,7 +1877,7 @@ body {
 }
 
 .btn-review-submit:hover {
-    background-color: var(--color-accent-primary-hover);
+    background-color: var(--color-btn-primary-hover);
 }
 
 /* Responsive */
