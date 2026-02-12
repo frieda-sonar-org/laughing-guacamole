@@ -256,6 +256,7 @@ export default function PRDetailClient() {
                 <path d="M4 2l4 4-4 4V2zM8 6l4 4-4 4V6z"/>
               </svg>
               Review
+              <span className="badge-beta">Beta</span>
             </a>
             <a href="#" className="sidebar-link">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
