@@ -14,9 +14,15 @@ export default function PRDetailClient() {
   const [showGroupFiles, setShowGroupFiles] = useState(false);
   const [showGroupFiles2, setShowGroupFiles2] = useState(false);
   const [showGroupFiles3, setShowGroupFiles3] = useState(false);
+  const [showGroupFiles4, setShowGroupFiles4] = useState(false);
+  const [showGroupFiles5, setShowGroupFiles5] = useState(false);
+  const [showGroupFiles6, setShowGroupFiles6] = useState(false);
   const [showFileChanges, setShowFileChanges] = useState(true);
   const [showFileChanges2, setShowFileChanges2] = useState(true);
   const [showFileChanges3, setShowFileChanges3] = useState(true);
+  const [showFileChanges4, setShowFileChanges4] = useState(true);
+  const [showFileChanges5, setShowFileChanges5] = useState(true);
+  const [showFileChanges6, setShowFileChanges6] = useState(true);
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewType, setReviewType] = useState('comment');
   const [reviewComment, setReviewComment] = useState('');
@@ -44,6 +50,9 @@ export default function PRDetailClient() {
   const [groupReviewed1, setGroupReviewed1] = useState(false);
   const [groupReviewed2, setGroupReviewed2] = useState(false);
   const [groupReviewed3, setGroupReviewed3] = useState(false);
+  const [groupReviewed4, setGroupReviewed4] = useState(false);
+  const [groupReviewed5, setGroupReviewed5] = useState(false);
+  const [groupReviewed6, setGroupReviewed6] = useState(false);
 
   // Author's Note FAB state
   const [showReviewerNote, setShowReviewerNote] = useState(true);
@@ -537,22 +546,15 @@ export default function PRDetailClient() {
                 <div className="files-groups">
                   <div className="files-groups-header">
                   <span>Groups</span>
-                  <span className="groups-count">0 / 4</span>
+                  <span className="groups-count">0 / 6</span>
                 </div>
 
-                {/* Group 1: CI/CD Workflow */}
+                {/* Group 1: GitHub PR Comment DTOs & Data Models */}
                 <div className="file-group">
                   <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    {groupReviewed1 ? (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                        <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      </svg>
-                    ) : (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
-                        <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                      </svg>
-                    )}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: groupReviewed1 ? '#4CAF50' : 'var(--color-text-muted)' }}>
+                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
                     <div style={{ flex: 1, overflow: 'hidden' }}>
                       <div
                         className="file-group-name"
@@ -563,13 +565,13 @@ export default function PRDetailClient() {
                           color: groupReviewed1 ? '#4CAF50' : 'inherit'
                         }}
                         onClick={() => {
-                          const element = document.getElementById('group-backend-api');
+                          const element = document.getElementById('group-dtos');
                           if (element) {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                           }
                         }}
                       >
-                        Backend API Endpoints
+                        GitHub PR Comment DTOs & Data Models
                       </div>
                       {showGroupFiles && (
                         <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
@@ -581,7 +583,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/api/routes/users.ts
+                            src/main/java/com/sonar/dto/GitHubPrReviewCommentDto.java
                           </div>
                           <div style={{
                             marginBottom: '4px',
@@ -591,17 +593,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/api/routes/auth.ts
-                          </div>
-                          <div style={{
-                            marginBottom: '4px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                            direction: 'rtl',
-                            textAlign: 'left'
-                          }}>
-                            src/api/controllers/userController.ts
+                            src/main/java/com/sonar/dto/PostPrReviewCommentRequestDto.java
                           </div>
                           <div style={{
                             overflow: 'hidden',
@@ -610,7 +602,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/api/middleware/validation.ts
+                            src/main/java/com/sonar/dto/package-info.java
                           </div>
                         </div>
                       )}
@@ -636,19 +628,12 @@ export default function PRDetailClient() {
                   </div>
                 </div>
 
-                {/* Group 2: API Authentication */}
+                {/* Group 2: GitHub Client Implementation & Service Logic */}
                 <div className="file-group">
                   <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    {groupReviewed2 ? (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                        <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      </svg>
-                    ) : (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
-                        <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                      </svg>
-                    )}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: groupReviewed2 ? '#4CAF50' : 'var(--color-text-muted)' }}>
+                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
                     <div style={{ flex: 1, overflow: 'hidden' }}>
                       <div
                         className="file-group-name"
@@ -659,13 +644,13 @@ export default function PRDetailClient() {
                           color: groupReviewed2 ? '#4CAF50' : 'inherit'
                         }}
                         onClick={() => {
-                          const element = document.getElementById('group-database');
+                          const element = document.getElementById('group-client-service');
                           if (element) {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                           }
                         }}
                       >
-                        Database & Models
+                        GitHub Client Implementation & Service Logic
                       </div>
                       {showGroupFiles2 && (
                         <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
@@ -677,7 +662,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/models/User.ts
+                            src/main/java/com/sonar/client/GitHubPrClient.java
                           </div>
                           <div style={{
                             marginBottom: '4px',
@@ -687,7 +672,17 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/models/Session.ts
+                            src/main/java/com/sonar/service/GitHubPrCommentServiceImpl.java
+                          </div>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/main/java/com/sonar/service/GitHubPrCommentService.java
                           </div>
                           <div style={{
                             overflow: 'hidden',
@@ -696,7 +691,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            migrations/20260211_add_user_sessions.sql
+                            src/main/java/com/sonar/config/GitHubConfig.java
                           </div>
                         </div>
                       )}
@@ -722,19 +717,12 @@ export default function PRDetailClient() {
                   </div>
                 </div>
 
-                {/* Group 3: Database Migration */}
+                {/* Group 3: GitHub Client Tests & Mock Implementation */}
                 <div className="file-group">
                   <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    {groupReviewed3 ? (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                        <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      </svg>
-                    ) : (
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
-                        <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                      </svg>
-                    )}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: groupReviewed3 ? '#4CAF50' : 'var(--color-text-muted)' }}>
+                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
                     <div style={{ flex: 1, overflow: 'hidden' }}>
                       <div
                         className="file-group-name"
@@ -745,13 +733,13 @@ export default function PRDetailClient() {
                           color: groupReviewed3 ? '#4CAF50' : 'inherit'
                         }}
                         onClick={() => {
-                          const element = document.getElementById('group-auth');
+                          const element = document.getElementById('group-tests');
                           if (element) {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                           }
                         }}
                       >
-                        Authentication & Security
+                        GitHub Client Tests & Mock Implementation
                       </div>
                       {showGroupFiles3 && (
                         <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
@@ -763,7 +751,7 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/services/authService.ts
+                            src/test/java/com/sonar/client/GitHubPrClientTest.java
                           </div>
                           <div style={{
                             marginBottom: '4px',
@@ -773,16 +761,52 @@ export default function PRDetailClient() {
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/utils/jwt.ts
+                            src/test/java/com/sonar/service/GitHubPrCommentServiceImplTest.java
                           </div>
                           <div style={{
+                            marginBottom: '4px',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
                             direction: 'rtl',
                             textAlign: 'left'
                           }}>
-                            src/middleware/authMiddleware.ts
+                            src/test/java/com/sonar/mock/MockGitHubClient.java
+                          </div>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left',
+                            textDecoration: 'line-through',
+                            opacity: 0.6
+                          }}>
+                            src/test/java/com/sonar/deprecated/OldMockServiceTest.java
+                          </div>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left',
+                            textDecoration: 'line-through',
+                            opacity: 0.6
+                          }}>
+                            src/test/java/com/sonar/deprecated/OldFactoryTest.java
+                          </div>
+                          <div style={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left',
+                            textDecoration: 'line-through',
+                            opacity: 0.6
+                          }}>
+                            src/test/java/com/sonar/deprecated/DeprecatedClientTest.java
                           </div>
                         </div>
                       )}
@@ -807,20 +831,257 @@ export default function PRDetailClient() {
                     </button>
                   </div>
                 </div>
+
+                {/* Group 4: PR Info Resolution Service Layer */}
+                <div className="file-group">
+                  <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: groupReviewed4 ? '#4CAF50' : 'var(--color-text-muted)' }}>
+                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
+                    <div style={{ flex: 1, overflow: 'hidden' }}>
+                      <div
+                        className="file-group-name"
+                        style={{
+                          fontWeight: 500,
+                          marginBottom: showGroupFiles4 ? '8px' : '0',
+                          cursor: 'pointer',
+                          color: groupReviewed4 ? '#4CAF50' : 'inherit'
+                        }}
+                        onClick={() => {
+                          const element = document.getElementById('group-pr-info');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                      >
+                        PR Info Resolution Service Layer
+                      </div>
+                      {showGroupFiles4 && (
+                        <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/main/java/com/sonar/service/PrInfoResolver.java
+                          </div>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/main/java/com/sonar/service/DatabasePrInfoResolver.java
+                          </div>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/test/java/com/sonar/service/PrInfoResolverTest.java
+                          </div>
+                          <div style={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/test/java/com/sonar/service/DatabasePrInfoResolverTest.java
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      className="file-group-toggle"
+                      onClick={() => setShowGroupFiles4(!showGroupFiles4)}
+                      style={{ marginLeft: '8px', flexShrink: 0, marginTop: '2px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showGroupFiles4 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Group 5: Review Controller Refactoring */}
+                <div className="file-group">
+                  <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: groupReviewed5 ? '#4CAF50' : 'var(--color-text-muted)' }}>
+                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
+                    <div style={{ flex: 1, overflow: 'hidden' }}>
+                      <div
+                        className="file-group-name"
+                        style={{
+                          fontWeight: 500,
+                          marginBottom: showGroupFiles5 ? '8px' : '0',
+                          cursor: 'pointer',
+                          color: groupReviewed5 ? '#4CAF50' : 'inherit'
+                        }}
+                        onClick={() => {
+                          const element = document.getElementById('group-controller');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                      >
+                        Review Controller Refactoring
+                      </div>
+                      {showGroupFiles5 && (
+                        <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/main/java/com/sonar/controller/PrReviewController.java
+                          </div>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/test/java/com/sonar/controller/PrReviewControllerTest.java
+                          </div>
+                          <div style={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/main/java/com/sonar/exception/ControllerExceptionHandler.java
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      className="file-group-toggle"
+                      onClick={() => setShowGroupFiles5(!showGroupFiles5)}
+                      style={{ marginLeft: '8px', flexShrink: 0, marginTop: '2px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showGroupFiles5 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Group 6: Configuration & Build Changes */}
+                <div className="file-group">
+                  <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: groupReviewed6 ? '#4CAF50' : 'var(--color-text-muted)' }}>
+                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
+                    <div style={{ flex: 1, overflow: 'hidden' }}>
+                      <div
+                        className="file-group-name"
+                        style={{
+                          fontWeight: 500,
+                          marginBottom: showGroupFiles6 ? '8px' : '0',
+                          cursor: 'pointer',
+                          color: groupReviewed6 ? '#4CAF50' : 'inherit'
+                        }}
+                        onClick={() => {
+                          const element = document.getElementById('group-config');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                      >
+                        Configuration & Build Changes
+                      </div>
+                      {showGroupFiles6 && (
+                        <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/main/java/com/sonar/config/AppConfig.java
+                          </div>
+                          <div style={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            pom.xml
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      className="file-group-toggle"
+                      onClick={() => setShowGroupFiles6(!showGroupFiles6)}
+                      style={{ marginLeft: '8px', flexShrink: 0, marginTop: '2px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showGroupFiles6 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
               </div>
 
               {/* Right content - File changes */}
               <div className="files-content">
-                {/* File Change Card */}
-                <div className="file-change-card" id="group-backend-api">
+                {/* Group 1: GitHub PR Comment DTOs & Data Models */}
+                <div className="file-change-card" id="group-dtos">
                   <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
-                      <h3 style={{ margin: 0 }}>Backend API Endpoints</h3>
+                      <h3 style={{ margin: 0 }}>GitHub PR Comment DTOs & Data Models</h3>
                       <span className="needs-review-badge">Needs review</span>
                       <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
-                        <span className="file-count">4 files</span>
-                        <span className="additions">+487</span>
-                        <span className="deletions">-23</span>
+                        <span className="file-count">3 files</span>
+                        <span className="additions">+156</span>
+                        <span className="deletions">-0</span>
                       </div>
                     </div>
                     <button
@@ -846,578 +1107,258 @@ export default function PRDetailClient() {
                   {showFileChanges && (
                     <>
                       <div className="file-change-description">
-                        <p>Implemented RESTful API endpoints for user management including CRUD operations, authentication routes, and request validation middleware. Uses Express.js router with modular controller pattern and JWT-based authentication.</p>
-                        <p className="review-focus"><strong>Review Focus:</strong> Verify proper error handling, input validation, and authentication checks on protected routes. Ensure API responses follow REST conventions and TypeScript types are correctly defined. Check for SQL injection vulnerabilities and proper password hashing.</p>
+                        <p>Added data transfer objects for GitHub PR review comments API integration. These DTOs handle the serialization/deserialization of GitHub API responses and requests for posting review comments on pull requests.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Verify proper JSON mapping annotations, null safety handling, and data validation. Ensure DTOs correctly match GitHub API v3 response format for PR review comments.</p>
                       </div>
 
-                      {/* Code Diff */}
+                      {/* File 1: GitHubPrReviewCommentDto.java */}
                       <div className="code-diff-container">
-                    <div className="code-diff-header">
-                      <div className="code-diff-toggle" onClick={() => setFileExpanded1(!fileExpanded1)} style={{ cursor: 'pointer' }}>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="currentColor"
-                          style={{
-                            transform: fileExpanded1 ? 'rotate(0deg)' : 'rotate(-90deg)',
-                            transition: 'transform 0.2s ease'
-                          }}
-                        >
-                          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                        </svg>
-                        <span className="code-file-path">src/api/routes/users.ts</span>
-                        <button className="copy-button">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-                            <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                            <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                          </svg>
-                        </button>
+                        <div className="code-diff-header">
+                          <div className="code-diff-toggle" onClick={() => setFileExpanded1(!fileExpanded1)} style={{ cursor: 'pointer' }}>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              style={{
+                                transform: fileExpanded1 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                                transition: 'transform 0.2s ease'
+                              }}
+                            >
+                              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                            </svg>
+                            <span className="code-file-path">src/main/java/com/sonar/github/dto/GitHubPrReviewCommentDto.java</span>
+                            <button className="copy-button">
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                                <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="code-diff-stats">
+                            <span className="additions">+87</span>
+                            <span className="deletions">-0</span>
+                            <span className="separator">•</span>
+                            <span className="coverage-badge">
+                              <CoverageIndicator percentage={95.2} size={14} />
+                              Coverage: 95.2%
+                            </span>
+                            <span className="separator">•</span>
+                            <span className="duplication">Duplications: 0.0%</span>
+                            <span className="separator">•</span>
+                            <span className="issues">Issues: 0</span>
+                            <button
+                              className="check-button"
+                              onClick={() => {
+                                setFileChecked1(!fileChecked1);
+                                if (!fileChecked1) setFileExpanded1(false);
+                              }}
+                              style={{ color: fileChecked1 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                            >
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+
+                        {fileExpanded1 && (
+                          <div className="code-diff-content">
+                            <table className="code-table">
+                              <tbody>
+                                <tr className="code-line added">
+                                  <td className="line-number">1</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">package</span> com.sonar.github.dto;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">2</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">3</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> com.fasterxml.jackson.annotation.JsonProperty;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">4</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> lombok.Data;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">5</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">6</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-comment">/**</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">7</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-comment"> * DTO representing a GitHub PR review comment response</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">8</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-comment"> */</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">9</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-annotation">@Data</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">10</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">public class</span> <span className="code-class">GitHubPrReviewCommentDto</span> {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">11</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-annotation">@JsonProperty</span>(<span className="code-string">"id"</span>)
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">12</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-keyword">private</span> <span className="code-type">Long</span> id;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">13</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">14</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-annotation">@JsonProperty</span>(<span className="code-string">"body"</span>)
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">15</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-keyword">private</span> <span className="code-type">String</span> body;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">16</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        )}
                       </div>
-                      <div className="code-diff-stats">
-                        <span className="additions">+215</span>
-                        <span className="deletions">-0</span>
-                        <span className="separator">•</span>
-                        <span className="coverage-badge">
-                          <CoverageIndicator percentage={92.8} size={14} />
-                          Coverage: 92.8%
-                        </span>
-                        <span className="separator">•</span>
-                        <span className="duplication">Duplications: 1.2%</span>
-                        <span className="separator">•</span>
-                        <span className="issues">Issues: 0</span>
+
+                      {/* Mark as reviewed button */}
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                         <button
-                          className="check-button"
+                          className={groupReviewed1 ? "mark-needs-review-button" : "mark-reviewed-button"}
                           onClick={() => {
-                            setFileChecked1(!fileChecked1);
-                            if (!fileChecked1) setFileExpanded1(false);
-                          }}
-                          style={{ color: fileChecked1 ? '#4CAF50' : 'var(--color-text-muted)' }}
-                        >
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                            <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-
-                    {fileExpanded1 && (
-                    <div className="code-diff-content">
-                      <table className="code-table">
-                        <tbody>
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line1')}>1</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line1')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-keyword">import</span> {'{ Router }'} <span className="code-keyword">from</span> <span className="code-string">'express'</span>;
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line1')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line2')}>2</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line2')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-keyword">import</span> * <span className="code-keyword">as</span> userController <span className="code-keyword">from</span> <span className="code-string">'../controllers/userController'</span>;
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line2')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line3')}>3</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line3')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-keyword">import</span> {'{ authMiddleware }'} <span className="code-keyword">from</span> <span className="code-string">'../../middleware/authMiddleware'</span>;
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line3')}
-                          <tr className="code-line added has-comment">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line4')}>4</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line4')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-keyword">import</span> {'{ validateUser }'} <span className="code-keyword">from</span> <span className="code-string">'../middleware/validation'</span>;
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line4')}
-                          <tr className="inline-comment-row">
-                            <td className="line-number"></td>
-                            <td className="line-comment-toggle"></td>
-                            <td colSpan={2}>
-                              <div className="inline-comment-container">
-                                <div className="inline-comment">
-                                  <div className="inline-comment-avatar">M</div>
-                                  <div className="inline-comment-content">
-                                    <div className="inline-comment-header">
-                                      <span className="inline-comment-author">Michael Chen</span>
-                                      <span className="inline-comment-date">2 hours ago</span>
-                                    </div>
-                                    <p className="inline-comment-text">
-                                      Should we also import the rate limiting middleware here? User endpoints might need protection against brute force.
-                                    </p>
-                                    <div className="inline-comment-actions">
-                                      <button className="inline-comment-action">Reply</button>
-                                      <button className="inline-comment-action">Resolve</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line5')}>5</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line5')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content"></td>
-                          </tr>
-                          {renderNewCommentInput('file1-line5')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line6')}>6</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line6')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-keyword">const</span> router = <span className="code-function">Router</span>();
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line6')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line7')}>7</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line7')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content"></td>
-                          </tr>
-                          {renderNewCommentInput('file1-line7')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line8')}>8</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line8')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-comment">// Get all users with pagination</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line8')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line9')}>9</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line9')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              router.<span className="code-function">get</span>(<span className="code-string">'/'</span>, authMiddleware, userController.getAllUsers);
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line9')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line10')}>10</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line10')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content"></td>
-                          </tr>
-                          {renderNewCommentInput('file1-line10')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line11')}>11</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line11')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-comment">// Get user by ID</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line11')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line12')}>12</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line12')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              router.<span className="code-function">get</span>(<span className="code-string">'/:id'</span>, authMiddleware, userController.getUserById);
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line12')}
-                        </tbody>
-                      </table>
-                    </div>
-                    )}
-                  </div>
-
-                  {/* Code Diff - Second File */}
-                  <div className="code-diff-container">
-                    <div className="code-diff-header">
-                      <div className="code-diff-toggle" onClick={() => setFileExpanded2(!fileExpanded2)} style={{ cursor: 'pointer' }}>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="currentColor"
-                          style={{
-                            transform: fileExpanded2 ? 'rotate(0deg)' : 'rotate(-90deg)',
-                            transition: 'transform 0.2s ease'
+                            if (!groupReviewed1) {
+                              setFileChecked1(true);
+                              setFileExpanded1(false);
+                              setGroupReviewed1(true);
+                              setShowFileChanges(false);
+                            } else {
+                              setFileChecked1(false);
+                              setGroupReviewed1(false);
+                            }
                           }}
                         >
-                          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                        </svg>
-                        <span className="code-file-path">.github/workflows/build.yml</span>
-                        <button className="copy-button">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-                            <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                            <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                          </svg>
+                          {groupReviewed1 ? 'Mark as needs review' : 'Mark as reviewed'}
                         </button>
                       </div>
-                      <div className="code-diff-stats">
-                        <span className="additions">+2</span>
-                        <span className="deletions">-7</span>
-                        <span className="separator">•</span>
-                        <span className="coverage-badge">
-                          <CoverageIndicator percentage={65} size={14} />
-                          Coverage: 65.0%
-                        </span>
-                        <span className="separator">•</span>
-                        <span className="duplication">Duplications: 0.0%</span>
-                        <span className="separator">•</span>
-                        <span className="issues">Issues: 0</span>
-                        <button
-                          className="check-button"
-                          onClick={() => {
-                            setFileChecked2(!fileChecked2);
-                            if (!fileChecked2) setFileExpanded2(false);
-                          }}
-                          style={{ color: fileChecked2 ? '#4CAF50' : 'var(--color-text-muted)' }}
-                        >
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                            <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-
-                    {fileExpanded2 && (
-                    <div className="code-diff-content">
-                      <table className="code-table">
-                        <tbody>
-                          <tr className="code-line">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line8')}>18</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line8')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign"></td>
-                            <td className="line-content">
-                              <span className="code-indent">  </span><span className="code-keyword">steps:</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line8')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line9')}>19</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line9')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content">
-                              <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Setup Node.js
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line9')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line10')}>20</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line10')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content">
-                              <span className="code-indent">      </span><span className="code-keyword">uses:</span> actions/setup-node@v3
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line10')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line11')}>21</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line11')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content">
-                              <span className="code-indent">      </span><span className="code-keyword">with:</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line11')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line12')}>22</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line12')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content">
-                              <span className="code-indent">        </span><span className="code-keyword">node-version:</span> <span className="code-string">'18'</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line12')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line13')}>23</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line13')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content">
-                              <span className="code-indent">        </span><span className="code-keyword">cache:</span> <span className="code-string">'npm'</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line13')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line14')}>24</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line14')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content"></td>
-                          </tr>
-                          {renderNewCommentInput('file1-line14')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line15')}>25</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line15')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content">
-                              <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Install dependencies
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line15')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line16')}>19</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line16')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Setup NPM
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line16')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line17')}>20</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line17')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-indent">      </span><span className="code-keyword">uses:</span> ./github/actions/npm-setup
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line17')}
-                          <tr className="code-line">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line18')}>21</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line18')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign"></td>
-                            <td className="line-content"></td>
-                          </tr>
-                          {renderNewCommentInput('file1-line18')}
-                          <tr className="code-line">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line19')}>22</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line19')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign"></td>
-                            <td className="line-content">
-                              <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Run build
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line19')}
-                        </tbody>
-                      </table>
-                    </div>
-                    )}
-                  </div>
-
-                  {/* Code Diff - Third File */}
-                  <div className="code-diff-container">
-                    <div className="code-diff-header">
-                      <div className="code-diff-toggle" onClick={() => setFileExpanded3(!fileExpanded3)} style={{ cursor: 'pointer' }}>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="currentColor"
-                          style={{
-                            transform: fileExpanded3 ? 'rotate(0deg)' : 'rotate(-90deg)',
-                            transition: 'transform 0.2s ease'
-                          }}
-                        >
-                          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                        </svg>
-                        <span className="code-file-path">.github/workflows/deploy.yml</span>
-                        <button className="copy-button">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-                            <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                            <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <div className="code-diff-stats">
-                        <span className="additions">+1</span>
-                        <span className="deletions">-2</span>
-                        <span className="separator">•</span>
-                        <span className="coverage-badge">
-                          <CoverageIndicator percentage={45} size={14} />
-                          Coverage: 45.0%
-                        </span>
-                        <span className="separator">•</span>
-                        <span className="duplication">Duplications: 0.0%</span>
-                        <span className="separator">•</span>
-                        <span className="issues">Issues: 0</span>
-                        <button
-                          className="check-button"
-                          onClick={() => {
-                            setFileChecked3(!fileChecked3);
-                            if (!fileChecked3) setFileExpanded3(false);
-                          }}
-                          style={{ color: fileChecked3 ? '#4CAF50' : 'var(--color-text-muted)' }}
-                        >
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                            <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-
-                    {fileExpanded3 && (
-                    <div className="code-diff-content">
-                      <table className="code-table">
-                        <tbody>
-                          <tr className="code-line">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line20')}>32</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line20')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign"></td>
-                            <td className="line-content">
-                              <span className="code-indent">  </span><span className="code-keyword">steps:</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line20')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line21')}>33</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line21')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content">
-                              <span className="code-indent">    </span>- <span className="code-keyword">uses:</span> actions/setup-node@v3
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line21')}
-                          <tr className="code-line removed">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line22')}>34</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line22')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">-</td>
-                            <td className="line-content">
-                              <span className="code-indent">      </span><span className="code-keyword">with:</span>
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line22')}
-                          <tr className="code-line added">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line23')}>33</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line23')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign">+</td>
-                            <td className="line-content">
-                              <span className="code-indent">    </span>- <span className="code-keyword">uses:</span> ./github/actions/npm-setup
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line23')}
-                          <tr className="code-line">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line24')}>34</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line24')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign"></td>
-                            <td className="line-content"></td>
-                          </tr>
-                          {renderNewCommentInput('file1-line24')}
-                          <tr className="code-line">
-                            <td className="line-number" onClick={() => handleLineClick('file1-line25')}>35</td>
-                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line25')}>
-                              <AddCommentButton />
-                            </td>
-                            <td className="line-sign"></td>
-                            <td className="line-content">
-                              <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Deploy to production
-                            </td>
-                          </tr>
-                          {renderNewCommentInput('file1-line25')}
-                        </tbody>
-                      </table>
-                    </div>
-                    )}
-                  </div>
-
-                  {/* Mark as reviewed button */}
-                  <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                    <button
-                      className={groupReviewed1 ? "mark-needs-review-button" : "mark-reviewed-button"}
-                      onClick={() => {
-                        if (!groupReviewed1) {
-                          // Mark as reviewed
-                          setFileChecked1(true);
-                          setFileChecked2(true);
-                          setFileChecked3(true);
-                          setFileExpanded1(false);
-                          setFileExpanded2(false);
-                          setFileExpanded3(false);
-                          setGroupReviewed1(true);
-                          setShowFileChanges(false); // Collapse the group
-                        } else {
-                          // Mark as needs review
-                          setFileChecked1(false);
-                          setFileChecked2(false);
-                          setFileChecked3(false);
-                          setGroupReviewed1(false);
-                        }
-                      }}
-                    >
-                      {groupReviewed1 ? 'Mark as needs review' : 'Mark as reviewed'}
-                    </button>
-                  </div>
                     </>
                   )}
                 </div>
 
-                {/* Second File Change Card - API Authentication Updates */}
-                <div className="file-change-card" id="group-auth">
+                {/* Group 2: GitHub Client Implementation & Service Logic */}
+                <div className="file-change-card" id="group-client-service">
                   <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
-                      <h3 style={{ margin: 0 }}>API Authentication & Security Enhancements</h3>
+                      <h3 style={{ margin: 0 }}>GitHub Client Implementation & Service Logic</h3>
                       <span className="needs-review-badge">Needs review</span>
                       <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
-                        <span className="file-count">2 files</span>
-                        <span className="additions">+47</span>
+                        <span className="file-count">4 files</span>
+                        <span className="additions">+287</span>
                         <span className="deletions">-12</span>
                       </div>
                     </div>
@@ -1444,27 +1385,27 @@ export default function PRDetailClient() {
                   {showFileChanges2 && (
                     <>
                       <div className="file-change-description">
-                        <p>Enhanced API authentication with JWT token refresh mechanism and improved error handling for expired tokens.</p>
-                        <p className="review-focus"><strong>Review Focus:</strong> Verify the token refresh logic handles edge cases properly, check that error messages don't leak sensitive information, and ensure the new middleware is correctly integrated.</p>
+                        <p>Implemented GitHub API client for PR comments with service layer abstraction. Includes HTTP client configuration, service interface, and implementation for posting review comments to GitHub PRs.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Verify proper HTTP client configuration with timeouts and retry logic. Ensure service layer properly abstracts GitHub API details and handles authentication tokens securely.</p>
                       </div>
 
-                      {/* Code Diff 1 */}
+                      {/* File 1: GitHubPrClient.java */}
                       <div className="code-diff-container">
                         <div className="code-diff-header">
-                          <div className="code-diff-toggle" onClick={() => setFileExpanded4(!fileExpanded4)} style={{ cursor: 'pointer' }}>
+                          <div className="code-diff-toggle" onClick={() => setFileExpanded2(!fileExpanded2)} style={{ cursor: 'pointer' }}>
                             <svg
                               width="16"
                               height="16"
                               viewBox="0 0 16 16"
                               fill="currentColor"
                               style={{
-                                transform: fileExpanded4 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                                transform: fileExpanded2 ? 'rotate(0deg)' : 'rotate(-90deg)',
                                 transition: 'transform 0.2s ease'
                               }}
                             >
                               <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                             </svg>
-                            <span className="code-file-path">src/middleware/auth.ts</span>
+                            <span className="code-file-path">src/main/java/com/sonar/github/client/GitHubPrClient.java</span>
                             <button className="copy-button">
                               <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
                                 <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
@@ -1473,176 +1414,24 @@ export default function PRDetailClient() {
                             </button>
                           </div>
                           <div className="code-diff-stats">
-                            <span className="additions">+35</span>
-                            <span className="deletions">-8</span>
+                            <span className="additions">+142</span>
+                            <span className="deletions">-5</span>
                             <span className="separator">•</span>
                             <span className="coverage-badge">
-                              <CoverageIndicator percentage={92} size={14} />
-                              Coverage: 92.0%
+                              <CoverageIndicator percentage={88.5} size={14} />
+                              Coverage: 88.5%
                             </span>
                             <span className="separator">•</span>
-                            <span className="duplication">Duplications: 0.0%</span>
-                            <span className="separator">•</span>
-                            <span className="issues">Issues: 0</span>
-                            <button
-                              className="check-button"
-                              onClick={() => {
-                                setFileChecked4(!fileChecked4);
-                                if (!fileChecked4) setFileExpanded4(false);
-                              }}
-                              style={{ color: fileChecked4 ? '#4CAF50' : 'var(--color-text-muted)' }}
-                            >
-                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                              </svg>
-                            </button>
-                          </div>
-                        </div>
-
-                        {fileExpanded4 && (
-                        <div className="code-diff-content">
-                          <table className="code-table">
-                            <tbody>
-                              <tr className="code-line">
-                                <td className="line-number">15</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign"></td>
-                                <td className="line-content">
-                                  <span className="code-keyword">export</span> <span className="code-keyword">async function</span> verifyToken(token: <span className="code-keyword">string</span>) {'{'}
-                                </td>
-                              </tr>
-                              <tr className="code-line removed">
-                                <td className="line-number">16</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">-</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span><span className="code-keyword">return</span> jwt.verify(token, SECRET_KEY);
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">17</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span><span className="code-keyword">try</span> {'{'}
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">18</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">    </span><span className="code-keyword">const</span> decoded = <span className="code-keyword">await</span> jwt.verify(token, SECRET_KEY);
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">19</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">    </span><span className="code-keyword">return</span> {'{'} valid: <span className="code-keyword">true</span>, data: decoded {'}'};
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">20</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>{'}'} <span className="code-keyword">catch</span> (error) {'{'}
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">21</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">    </span><span className="code-keyword">return</span> {'{'} valid: <span className="code-keyword">false</span>, error: <span className="code-string">'Invalid or expired token'</span> {'}'};
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">22</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>{'}'}
-                                </td>
-                              </tr>
-                              <tr className="code-line">
-                                <td className="line-number">23</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign"></td>
-                                <td className="line-content">
-                                  {'}'}
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        )}
-                      </div>
-
-                      {/* Code Diff 2 */}
-                      <div className="code-diff-container">
-                        <div className="code-diff-header">
-                          <div className="code-diff-toggle" onClick={() => setFileExpanded5(!fileExpanded5)} style={{ cursor: 'pointer' }}>
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="currentColor"
-                              style={{
-                                transform: fileExpanded5 ? 'rotate(0deg)' : 'rotate(-90deg)',
-                                transition: 'transform 0.2s ease'
-                              }}
-                            >
-                              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
-                            </svg>
-                            <span className="code-file-path">src/api/refresh-token.ts</span>
-                            <button className="copy-button">
-                              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-                                <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                                <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                              </svg>
-                            </button>
-                          </div>
-                          <div className="code-diff-stats">
-                            <span className="additions">+12</span>
-                            <span className="deletions">-4</span>
-                            <span className="separator">•</span>
-                            <span className="coverage-badge">
-                              <CoverageIndicator percentage={78} size={14} />
-                              Coverage: 78.0%
-                            </span>
-                            <span className="separator">•</span>
-                            <span className="duplication">Duplications: 0.0%</span>
+                            <span className="duplication">Duplications: 0.8%</span>
                             <span className="separator">•</span>
                             <span className="issues">Issues: 1</span>
                             <button
                               className="check-button"
                               onClick={() => {
-                                setFileChecked5(!fileChecked5);
-                                if (!fileChecked5) setFileExpanded5(false);
+                                setFileChecked2(!fileChecked2);
+                                if (!fileChecked2) setFileExpanded2(false);
                               }}
-                              style={{ color: fileChecked5 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                              style={{ color: fileChecked2 ? '#4CAF50' : 'var(--color-text-muted)' }}
                             >
                               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                 <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
@@ -1652,91 +1441,137 @@ export default function PRDetailClient() {
                           </div>
                         </div>
 
-                        {fileExpanded5 && (
-                        <div className="code-diff-content">
-                          <table className="code-table">
-                            <tbody>
-                              <tr className="code-line added">
-                                <td className="line-number">1</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-keyword">import</span> {'{'} generateToken {'}'} <span className="code-keyword">from</span> <span className="code-string">'./auth'</span>;
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">2</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-keyword">import</span> {'{'} validateRefreshToken {'}'} <span className="code-keyword">from</span> <span className="code-string">'./utils'</span>;
-                                </td>
-                              </tr>
-                              <tr className="code-line">
-                                <td className="line-number">3</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign"></td>
-                                <td className="line-content"></td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">4</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-keyword">export async function</span> refreshAccessToken(refreshToken: <span className="code-keyword">string</span>) {'{'}
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">5</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span><span className="code-keyword">const</span> isValid = <span className="code-keyword">await</span> validateRefreshToken(refreshToken);
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">6</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span><span className="code-keyword">if</span> (!isValid) <span className="code-keyword">throw new</span> Error(<span className="code-string">'Invalid refresh token'</span>);
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">7</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span><span className="code-keyword">return</span> generateToken(isValid.userId);
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">8</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  {'}'}
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
+                        {fileExpanded2 && (
+                          <div className="code-diff-content">
+                            <table className="code-table">
+                              <tbody>
+                                <tr className="code-line added">
+                                  <td className="line-number">1</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">package</span> com.sonar.github.client;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">2</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">3</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> org.springframework.stereotype.Component;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">4</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> org.springframework.web.client.RestTemplate;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">5</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">6</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-annotation">@Component</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">7</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">public class</span> <span className="code-class">GitHubPrClient</span> {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">8</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-keyword">private final</span> <span className="code-type">RestTemplate</span> restTemplate;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">9</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">10</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-keyword">public</span> <span className="code-function">GitHubPrClient</span>(<span className="code-type">RestTemplate</span> restTemplate) {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">11</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">        </span><span className="code-keyword">this</span>.restTemplate = restTemplate;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">12</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">13</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         )}
                       </div>
 
@@ -1746,17 +1581,12 @@ export default function PRDetailClient() {
                           className={groupReviewed2 ? "mark-needs-review-button" : "mark-reviewed-button"}
                           onClick={() => {
                             if (!groupReviewed2) {
-                              // Mark as reviewed
-                              setFileChecked4(true);
-                              setFileChecked5(true);
-                              setFileExpanded4(false);
-                              setFileExpanded5(false);
+                              setFileChecked2(true);
+                              setFileExpanded2(false);
                               setGroupReviewed2(true);
-                              setShowFileChanges2(false); // Collapse the group
+                              setShowFileChanges2(false);
                             } else {
-                              // Mark as needs review
-                              setFileChecked4(false);
-                              setFileChecked5(false);
+                              setFileChecked2(false);
                               setGroupReviewed2(false);
                             }
                           }}
@@ -1768,16 +1598,16 @@ export default function PRDetailClient() {
                   )}
                 </div>
 
-                {/* Third File Change Card - Database Migration Scripts */}
-                <div className="file-change-card" id="group-database">
+                {/* Group 3: GitHub Client Tests & Mock Implementation */}
+                <div className="file-change-card" id="group-tests">
                   <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
-                      <h3 style={{ margin: 0 }}>Database Schema Migration - User Preferences</h3>
+                      <h3 style={{ margin: 0 }}>GitHub Client Tests & Mock Implementation</h3>
                       <span className="needs-review-badge">Needs review</span>
                       <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
-                        <span className="file-count">1 file</span>
-                        <span className="additions">+28</span>
-                        <span className="deletions">-0</span>
+                        <span className="file-count">6 files</span>
+                        <span className="additions">+423</span>
+                        <span className="deletions">-187</span>
                       </div>
                     </div>
                     <button
@@ -1803,11 +1633,653 @@ export default function PRDetailClient() {
                   {showFileChanges3 && (
                     <>
                       <div className="file-change-description">
-                        <p>Added new database migration to create user_preferences table for storing theme, language, and notification settings.</p>
-                        <p className="review-focus"><strong>Review Focus:</strong> Verify the migration script includes proper indexes for frequently queried columns, check foreign key constraints are correctly defined, and ensure the rollback script is complete.</p>
+                        <p>Added comprehensive unit tests for GitHub client and service layers with mock implementations. Removed deprecated test files that are no longer needed after the refactoring.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Verify test coverage is comprehensive including error cases. Ensure mock implementation matches production behavior. Confirm deleted tests are truly obsolete.</p>
                       </div>
 
-                      {/* Code Diff */}
+                      {/* File 1: GitHubPrClientTest.java */}
+                      <div className="code-diff-container">
+                        <div className="code-diff-header">
+                          <div className="code-diff-toggle" onClick={() => setFileExpanded3(!fileExpanded3)} style={{ cursor: 'pointer' }}>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              style={{
+                                transform: fileExpanded3 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                                transition: 'transform 0.2s ease'
+                              }}
+                            >
+                              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                            </svg>
+                            <span className="code-file-path">src/test/java/com/sonar/github/client/GitHubPrClientTest.java</span>
+                            <button className="copy-button">
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                                <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="code-diff-stats">
+                            <span className="additions">+156</span>
+                            <span className="deletions">-0</span>
+                            <span className="separator">•</span>
+                            <span className="coverage-badge">
+                              <CoverageIndicator percentage={100.0} size={14} />
+                              Coverage: 100.0%
+                            </span>
+                            <span className="separator">•</span>
+                            <span className="duplication">Duplications: 0.0%</span>
+                            <span className="separator">•</span>
+                            <span className="issues">Issues: 0</span>
+                            <button
+                              className="check-button"
+                              onClick={() => {
+                                setFileChecked3(!fileChecked3);
+                                if (!fileChecked3) setFileExpanded3(false);
+                              }}
+                              style={{ color: fileChecked3 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                            >
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+
+                        {fileExpanded3 && (
+                          <div className="code-diff-content">
+                            <table className="code-table">
+                              <tbody>
+                                <tr className="code-line added">
+                                  <td className="line-number">1</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">package</span> com.sonar.github.client;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">2</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">3</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> org.junit.jupiter.api.Test;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">4</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> org.mockito.Mock;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">5</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">6</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">class</span> <span className="code-class">GitHubPrClientTest</span> {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">7</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-annotation">@Mock</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">8</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-keyword">private</span> <span className="code-type">RestTemplate</span> restTemplate;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">9</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">10</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-annotation">@Test</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">11</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-keyword">void</span> <span className="code-function">shouldPostComment</span>() {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">12</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">        </span><span className="code-comment">// Test implementation</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">13</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">14</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Mark as reviewed button */}
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                        <button
+                          className={groupReviewed3 ? "mark-needs-review-button" : "mark-reviewed-button"}
+                          onClick={() => {
+                            if (!groupReviewed3) {
+                              setFileChecked3(true);
+                              setFileExpanded3(false);
+                              setGroupReviewed3(true);
+                              setShowFileChanges3(false);
+                            } else {
+                              setFileChecked3(false);
+                              setGroupReviewed3(false);
+                            }
+                          }}
+                        >
+                          {groupReviewed3 ? 'Mark as needs review' : 'Mark as reviewed'}
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Group 4: PR Info Resolution Service Layer */}
+                <div className="file-change-card" id="group-pr-info">
+                  <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                      <h3 style={{ margin: 0 }}>PR Info Resolution Service Layer</h3>
+                      <span className="needs-review-badge">Needs review</span>
+                      <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+                        <span className="file-count">4 files</span>
+                        <span className="additions">+298</span>
+                        <span className="deletions">-8</span>
+                      </div>
+                    </div>
+                    <button
+                      className="pin-button"
+                      onClick={() => setShowFileChanges4(!showFileChanges4)}
+                      style={{ marginLeft: '12px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showFileChanges4 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {showFileChanges4 && (
+                    <>
+                      <div className="file-change-description">
+                        <p>Added service layer for resolving PR information from database. Includes interface definition, database implementation, and comprehensive unit tests for both components.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Verify proper database transaction handling, null safety, and caching strategy. Ensure service abstraction allows for future alternative implementations.</p>
+                      </div>
+
+                      {/* File 1: PrInfoResolver.java */}
+                      <div className="code-diff-container">
+                        <div className="code-diff-header">
+                          <div className="code-diff-toggle" onClick={() => setFileExpanded4(!fileExpanded4)} style={{ cursor: 'pointer' }}>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              style={{
+                                transform: fileExpanded4 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                                transition: 'transform 0.2s ease'
+                              }}
+                            >
+                              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                            </svg>
+                            <span className="code-file-path">src/main/java/com/sonar/prinfo/PrInfoResolver.java</span>
+                            <button className="copy-button">
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                                <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="code-diff-stats">
+                            <span className="additions">+78</span>
+                            <span className="deletions">-0</span>
+                            <span className="separator">•</span>
+                            <span className="coverage-badge">
+                              <CoverageIndicator percentage={92.3} size={14} />
+                              Coverage: 92.3%
+                            </span>
+                            <span className="separator">•</span>
+                            <span className="duplication">Duplications: 0.0%</span>
+                            <span className="separator">•</span>
+                            <span className="issues">Issues: 0</span>
+                            <button
+                              className="check-button"
+                              onClick={() => {
+                                setFileChecked4(!fileChecked4);
+                                if (!fileChecked4) setFileExpanded4(false);
+                              }}
+                              style={{ color: fileChecked4 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                            >
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+
+                        {fileExpanded4 && (
+                          <div className="code-diff-content">
+                            <table className="code-table">
+                              <tbody>
+                                <tr className="code-line added">
+                                  <td className="line-number">1</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">package</span> com.sonar.prinfo;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">2</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">3</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">public interface</span> <span className="code-class">PrInfoResolver</span> {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">4</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-type">PrInfo</span> <span className="code-function">resolve</span>(<span className="code-type">String</span> prKey);
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">5</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Mark as reviewed button */}
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                        <button
+                          className={groupReviewed4 ? "mark-needs-review-button" : "mark-reviewed-button"}
+                          onClick={() => {
+                            if (!groupReviewed4) {
+                              setFileChecked4(true);
+                              setFileExpanded4(false);
+                              setGroupReviewed4(true);
+                              setShowFileChanges4(false);
+                            } else {
+                              setFileChecked4(false);
+                              setGroupReviewed4(false);
+                            }
+                          }}
+                        >
+                          {groupReviewed4 ? 'Mark as needs review' : 'Mark as reviewed'}
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Group 5: Review Controller Refactoring */}
+                <div className="file-change-card" id="group-controller">
+                  <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                      <h3 style={{ margin: 0 }}>Review Controller Refactoring</h3>
+                      <span className="needs-review-badge">Needs review</span>
+                      <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+                        <span className="file-count">3 files</span>
+                        <span className="additions">+134</span>
+                        <span className="deletions">-67</span>
+                      </div>
+                    </div>
+                    <button
+                      className="pin-button"
+                      onClick={() => setShowFileChanges5(!showFileChanges5)}
+                      style={{ marginLeft: '12px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showFileChanges5 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {showFileChanges5 && (
+                    <>
+                      <div className="file-change-description">
+                        <p>Refactored review controller to use new GitHub comment service. Added exception handling for API errors and updated tests to cover new functionality.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Verify proper HTTP status codes for different error scenarios. Ensure controller properly delegates to service layer without business logic leakage.</p>
+                      </div>
+
+                      {/* File 1: PrReviewController.java */}
+                      <div className="code-diff-container">
+                        <div className="code-diff-header">
+                          <div className="code-diff-toggle" onClick={() => setFileExpanded5(!fileExpanded5)} style={{ cursor: 'pointer' }}>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              style={{
+                                transform: fileExpanded5 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                                transition: 'transform 0.2s ease'
+                              }}
+                            >
+                              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                            </svg>
+                            <span className="code-file-path">src/main/java/com/sonar/controller/PrReviewController.java</span>
+                            <button className="copy-button">
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                                <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="code-diff-stats">
+                            <span className="additions">+89</span>
+                            <span className="deletions">-45</span>
+                            <span className="separator">•</span>
+                            <span className="coverage-badge">
+                              <CoverageIndicator percentage={87.1} size={14} />
+                              Coverage: 87.1%
+                            </span>
+                            <span className="separator">•</span>
+                            <span className="duplication">Duplications: 1.5%</span>
+                            <span className="separator">•</span>
+                            <span className="issues">Issues: 2</span>
+                            <button
+                              className="check-button"
+                              onClick={() => {
+                                setFileChecked5(!fileChecked5);
+                                if (!fileChecked5) setFileExpanded5(false);
+                              }}
+                              style={{ color: fileChecked5 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                            >
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+
+                        {fileExpanded5 && (
+                          <div className="code-diff-content">
+                            <table className="code-table">
+                              <tbody>
+                                <tr className="code-line removed">
+                                  <td className="line-number">1</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">-</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> com.sonar.old.OldService;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">1</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> com.sonar.github.service.GitHubPrCommentService;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">2</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> org.springframework.web.bind.annotation.*;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">3</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">4</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-annotation">@RestController</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">5</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-annotation">@RequestMapping</span>(<span className="code-string">"/api/pr/review"</span>)
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">6</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">public class</span> <span className="code-class">PrReviewController</span> {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">7</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-keyword">private final</span> <span className="code-type">GitHubPrCommentService</span> commentService;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">8</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Mark as reviewed button */}
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                        <button
+                          className={groupReviewed5 ? "mark-needs-review-button" : "mark-reviewed-button"}
+                          onClick={() => {
+                            if (!groupReviewed5) {
+                              setFileChecked5(true);
+                              setFileExpanded5(false);
+                              setGroupReviewed5(true);
+                              setShowFileChanges5(false);
+                            } else {
+                              setFileChecked5(false);
+                              setGroupReviewed5(false);
+                            }
+                          }}
+                        >
+                          {groupReviewed5 ? 'Mark as needs review' : 'Mark as reviewed'}
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Group 6: Configuration & Build Changes */}
+                <div className="file-change-card" id="group-config">
+                  <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                      <h3 style={{ margin: 0 }}>Configuration & Build Changes</h3>
+                      <span className="needs-review-badge">Needs review</span>
+                      <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+                        <span className="file-count">2 files</span>
+                        <span className="additions">+45</span>
+                        <span className="deletions">-3</span>
+                      </div>
+                    </div>
+                    <button
+                      className="pin-button"
+                      onClick={() => setShowFileChanges6(!showFileChanges6)}
+                      style={{ marginLeft: '12px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showFileChanges6 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {showFileChanges6 && (
+                    <>
+                      <div className="file-change-description">
+                        <p>Updated application configuration and Maven dependencies to support GitHub API integration. Added required dependencies and configuration beans.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Verify dependency versions are secure and compatible. Ensure configuration beans are properly scoped and don't introduce circular dependencies.</p>
+                      </div>
+
+                      {/* File 1: AppConfig.java */}
                       <div className="code-diff-container">
                         <div className="code-diff-header">
                           <div className="code-diff-toggle" onClick={() => setFileExpanded6(!fileExpanded6)} style={{ cursor: 'pointer' }}>
@@ -1823,7 +2295,7 @@ export default function PRDetailClient() {
                             >
                               <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                             </svg>
-                            <span className="code-file-path">migrations/20260119_add_user_preferences.sql</span>
+                            <span className="code-file-path">src/main/java/com/sonar/config/AppConfig.java</span>
                             <button className="copy-button">
                               <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
                                 <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
@@ -1832,12 +2304,12 @@ export default function PRDetailClient() {
                             </button>
                           </div>
                           <div className="code-diff-stats">
-                            <span className="additions">+28</span>
-                            <span className="deletions">-0</span>
+                            <span className="additions">+32</span>
+                            <span className="deletions">-2</span>
                             <span className="separator">•</span>
                             <span className="coverage-badge">
-                              <CoverageIndicator percentage={0} size={14} />
-                              Coverage: 0.0%
+                              <CoverageIndicator percentage={78.5} size={14} />
+                              Coverage: 78.5%
                             </span>
                             <span className="separator">•</span>
                             <span className="duplication">Duplications: 0.0%</span>
@@ -1860,158 +2332,154 @@ export default function PRDetailClient() {
                         </div>
 
                         {fileExpanded6 && (
-
-                        <div className="code-diff-content">
-                          <table className="code-table">
-                            <tbody>
-                              <tr className="code-line added">
-                                <td className="line-number">1</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-keyword">CREATE TABLE</span> user_preferences (
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">2</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>id <span className="code-keyword">BIGSERIAL PRIMARY KEY</span>,
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">3</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>user_id <span className="code-keyword">BIGINT NOT NULL</span>,
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">4</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>theme <span className="code-keyword">VARCHAR</span>(20) <span className="code-keyword">DEFAULT</span> <span className="code-string">'light'</span>,
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">5</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>language <span className="code-keyword">VARCHAR</span>(10) <span className="code-keyword">DEFAULT</span> <span className="code-string">'en'</span>,
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">6</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>notifications_enabled <span className="code-keyword">BOOLEAN DEFAULT TRUE</span>,
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">7</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>created_at <span className="code-keyword">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</span>,
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">8</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span>updated_at <span className="code-keyword">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</span>,
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">9</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-indent">  </span><span className="code-keyword">FOREIGN KEY</span> (user_id) <span className="code-keyword">REFERENCES</span> users(id) <span className="code-keyword">ON DELETE CASCADE</span>
-                                </td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">10</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  );
-                                </td>
-                              </tr>
-                              <tr className="code-line">
-                                <td className="line-number">11</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign"></td>
-                                <td className="line-content"></td>
-                              </tr>
-                              <tr className="code-line added">
-                                <td className="line-number">12</td>
-                                <td className="line-comment-toggle">
-                                  <AddCommentButton />
-                                </td>
-                                <td className="line-sign">+</td>
-                                <td className="line-content">
-                                  <span className="code-keyword">CREATE INDEX</span> idx_user_preferences_user_id <span className="code-keyword">ON</span> user_preferences(user_id);
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
+                          <div className="code-diff-content">
+                            <table className="code-table">
+                              <tbody>
+                                <tr className="code-line added">
+                                  <td className="line-number">1</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">package</span> com.sonar.config;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">2</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">3</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> org.springframework.context.annotation.Configuration;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">4</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">import</span> org.springframework.context.annotation.Bean;
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">5</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content"></td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">6</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-annotation">@Configuration</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">7</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-keyword">public class</span> <span className="code-class">AppConfig</span> {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">8</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-annotation">@Bean</span>
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">9</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span><span className="code-keyword">public</span> <span className="code-type">RestTemplate</span> <span className="code-function">restTemplate</span>() {'{'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">10</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">        </span><span className="code-keyword">return new</span> <span className="code-function">RestTemplate</span>();
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">11</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                                <tr className="code-line added">
+                                  <td className="line-number">12</td>
+                                  <td className="line-comment-toggle">
+                                    <AddCommentButton />
+                                  </td>
+                                  <td className="line-sign">+</td>
+                                  <td className="line-content">
+                                    <span className="code-indent">    </span>{'}'}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         )}
                       </div>
 
                       {/* Mark as reviewed button */}
                       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                         <button
-                          className={groupReviewed3 ? "mark-needs-review-button" : "mark-reviewed-button"}
+                          className={groupReviewed6 ? "mark-needs-review-button" : "mark-reviewed-button"}
                           onClick={() => {
-                            if (!groupReviewed3) {
-                              // Mark as reviewed
+                            if (!groupReviewed6) {
                               setFileChecked6(true);
                               setFileExpanded6(false);
-                              setGroupReviewed3(true);
-                              setShowFileChanges3(false); // Collapse the group
+                              setGroupReviewed6(true);
+                              setShowFileChanges6(false);
                             } else {
-                              // Mark as needs review
                               setFileChecked6(false);
-                              setGroupReviewed3(false);
+                              setGroupReviewed6(false);
                             }
                           }}
                         >
-                          {groupReviewed3 ? 'Mark as needs review' : 'Mark as reviewed'}
+                          {groupReviewed6 ? 'Mark as needs review' : 'Mark as reviewed'}
                         </button>
                       </div>
                     </>
                   )}
                 </div>
+              </div>
               </div>
             </div>
             </div>
