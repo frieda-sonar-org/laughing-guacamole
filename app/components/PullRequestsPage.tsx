@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const basePath = process.env.NODE_ENV === 'production' ? '/code-review-prototype' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '/laughing-guacamole' : '';
 
 export default function PullRequestsPage() {
   return (

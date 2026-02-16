@@ -6,7 +6,7 @@ import Link from 'next/link';
 import AddCommentButton from '@/app/components/AddCommentButton';
 import CoverageIndicator from '@/app/components/CoverageIndicator';
 
-const basePath = process.env.NODE_ENV === 'production' ? '/code-review-prototype' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '/laughing-guacamole' : '';
 
 export default function PRDetailClient() {
   const params = useParams();
@@ -1170,157 +1170,173 @@ export default function PRDetailClient() {
                                 <tr className="code-line added">
                                   <td className="line-number">1</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-1')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">package</span> com.sonar.github.dto;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-1')}
                                 <tr className="code-line added">
                                   <td className="line-number">2</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-2')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-2')}
                                 <tr className="code-line added">
                                   <td className="line-number">3</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-3')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> com.fasterxml.jackson.annotation.JsonProperty;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-3')}
                                 <tr className="code-line added">
                                   <td className="line-number">4</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-4')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> lombok.Data;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-4')}
                                 <tr className="code-line added">
                                   <td className="line-number">5</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-5')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-5')}
                                 <tr className="code-line added">
                                   <td className="line-number">6</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-6')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-comment">/**</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-6')}
                                 <tr className="code-line added">
                                   <td className="line-number">7</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-7')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-comment"> * DTO representing a GitHub PR review comment response</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-7')}
                                 <tr className="code-line added">
                                   <td className="line-number">8</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-8')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-comment"> */</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-8')}
                                 <tr className="code-line added">
                                   <td className="line-number">9</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-9')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-annotation">@Data</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-9')}
                                 <tr className="code-line added">
                                   <td className="line-number">10</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-10')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">public class</span> <span className="code-class">GitHubPrReviewCommentDto</span> {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-10')}
                                 <tr className="code-line added">
                                   <td className="line-number">11</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-11')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-annotation">@JsonProperty</span>(<span className="code-string">"id"</span>)
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-11')}
                                 <tr className="code-line added">
                                   <td className="line-number">12</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-12')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-keyword">private</span> <span className="code-type">Long</span> id;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-12')}
                                 <tr className="code-line added">
                                   <td className="line-number">13</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-13')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-13')}
                                 <tr className="code-line added">
                                   <td className="line-number">14</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-14')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-annotation">@JsonProperty</span>(<span className="code-string">"body"</span>)
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-14')}
                                 <tr className="code-line added">
                                   <td className="line-number">15</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-15')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-keyword">private</span> <span className="code-type">String</span> body;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-15')}
                                 <tr className="code-line added">
                                   <td className="line-number">16</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-16')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-16')}
                               </tbody>
                             </table>
                           </div>
@@ -1448,127 +1464,140 @@ export default function PRDetailClient() {
                                 <tr className="code-line added">
                                   <td className="line-number">1</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-17')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">package</span> com.sonar.github.client;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-17')}
                                 <tr className="code-line added">
                                   <td className="line-number">2</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-18')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-18')}
                                 <tr className="code-line added">
                                   <td className="line-number">3</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-19')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> org.springframework.stereotype.Component;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-19')}
                                 <tr className="code-line added">
                                   <td className="line-number">4</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-20')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> org.springframework.web.client.RestTemplate;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-20')}
                                 <tr className="code-line added">
                                   <td className="line-number">5</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-21')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-21')}
                                 <tr className="code-line added">
                                   <td className="line-number">6</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-22')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-annotation">@Component</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-22')}
                                 <tr className="code-line added">
                                   <td className="line-number">7</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-23')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">public class</span> <span className="code-class">GitHubPrClient</span> {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-23')}
                                 <tr className="code-line added">
                                   <td className="line-number">8</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-24')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-keyword">private final</span> <span className="code-type">RestTemplate</span> restTemplate;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-24')}
                                 <tr className="code-line added">
                                   <td className="line-number">9</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-25')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-25')}
                                 <tr className="code-line added">
                                   <td className="line-number">10</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-26')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-keyword">public</span> <span className="code-function">GitHubPrClient</span>(<span className="code-type">RestTemplate</span> restTemplate) {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-26')}
                                 <tr className="code-line added">
                                   <td className="line-number">11</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-27')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">        </span><span className="code-keyword">this</span>.restTemplate = restTemplate;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-27')}
                                 <tr className="code-line added">
                                   <td className="line-number">12</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-28')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-28')}
                                 <tr className="code-line added">
                                   <td className="line-number">13</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-29')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-29')}
                               </tbody>
                             </table>
                           </div>
@@ -1696,137 +1725,151 @@ export default function PRDetailClient() {
                                 <tr className="code-line added">
                                   <td className="line-number">1</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-30')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">package</span> com.sonar.github.client;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-30')}
                                 <tr className="code-line added">
                                   <td className="line-number">2</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-31')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-31')}
                                 <tr className="code-line added">
                                   <td className="line-number">3</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-32')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> org.junit.jupiter.api.Test;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-32')}
                                 <tr className="code-line added">
                                   <td className="line-number">4</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-33')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> org.mockito.Mock;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-33')}
                                 <tr className="code-line added">
                                   <td className="line-number">5</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-34')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-34')}
                                 <tr className="code-line added">
                                   <td className="line-number">6</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-35')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">class</span> <span className="code-class">GitHubPrClientTest</span> {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-35')}
                                 <tr className="code-line added">
                                   <td className="line-number">7</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-36')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-annotation">@Mock</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-36')}
                                 <tr className="code-line added">
                                   <td className="line-number">8</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-37')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-keyword">private</span> <span className="code-type">RestTemplate</span> restTemplate;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-37')}
                                 <tr className="code-line added">
                                   <td className="line-number">9</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-38')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-38')}
                                 <tr className="code-line added">
                                   <td className="line-number">10</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-39')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-annotation">@Test</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-39')}
                                 <tr className="code-line added">
                                   <td className="line-number">11</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-40')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-keyword">void</span> <span className="code-function">shouldPostComment</span>() {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-40')}
                                 <tr className="code-line added">
                                   <td className="line-number">12</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-41')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">        </span><span className="code-comment">// Test implementation</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-41')}
                                 <tr className="code-line added">
                                   <td className="line-number">13</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-42')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-42')}
                                 <tr className="code-line added">
                                   <td className="line-number">14</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-43')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-43')}
                               </tbody>
                             </table>
                           </div>
@@ -1954,51 +1997,56 @@ export default function PRDetailClient() {
                                 <tr className="code-line added">
                                   <td className="line-number">1</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-44')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">package</span> com.sonar.prinfo;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-44')}
                                 <tr className="code-line added">
                                   <td className="line-number">2</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-45')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-45')}
                                 <tr className="code-line added">
                                   <td className="line-number">3</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-46')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">public interface</span> <span className="code-class">PrInfoResolver</span> {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-46')}
                                 <tr className="code-line added">
                                   <td className="line-number">4</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-47')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-type">PrInfo</span> <span className="code-function">resolve</span>(<span className="code-type">String</span> prKey);
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-47')}
                                 <tr className="code-line added">
                                   <td className="line-number">5</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-48')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-48')}
                               </tbody>
                             </table>
                           </div>
@@ -2126,91 +2174,100 @@ export default function PRDetailClient() {
                                 <tr className="code-line removed">
                                   <td className="line-number">1</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-49')} />
                                   </td>
                                   <td className="line-sign">-</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> com.sonar.old.OldService;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-49')}
                                 <tr className="code-line added">
                                   <td className="line-number">1</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-50')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> com.sonar.github.service.GitHubPrCommentService;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-50')}
                                 <tr className="code-line added">
                                   <td className="line-number">2</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-51')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> org.springframework.web.bind.annotation.*;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-51')}
                                 <tr className="code-line added">
                                   <td className="line-number">3</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-52')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-52')}
                                 <tr className="code-line added">
                                   <td className="line-number">4</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-53')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-annotation">@RestController</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-53')}
                                 <tr className="code-line added">
                                   <td className="line-number">5</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-54')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-annotation">@RequestMapping</span>(<span className="code-string">"/api/pr/review"</span>)
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-54')}
                                 <tr className="code-line added">
                                   <td className="line-number">6</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-55')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">public class</span> <span className="code-class">PrReviewController</span> {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-55')}
                                 <tr className="code-line added">
                                   <td className="line-number">7</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-56')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-keyword">private final</span> <span className="code-type">GitHubPrCommentService</span> commentService;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-56')}
                                 <tr className="code-line added">
                                   <td className="line-number">8</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-57')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-57')}
                               </tbody>
                             </table>
                           </div>
@@ -2338,119 +2395,131 @@ export default function PRDetailClient() {
                                 <tr className="code-line added">
                                   <td className="line-number">1</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-58')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">package</span> com.sonar.config;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-58')}
                                 <tr className="code-line added">
                                   <td className="line-number">2</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-59')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-59')}
                                 <tr className="code-line added">
                                   <td className="line-number">3</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-60')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> org.springframework.context.annotation.Configuration;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-60')}
                                 <tr className="code-line added">
                                   <td className="line-number">4</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-61')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">import</span> org.springframework.context.annotation.Bean;
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-61')}
                                 <tr className="code-line added">
                                   <td className="line-number">5</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-62')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content"></td>
                                 </tr>
+                                {renderNewCommentInput('line-62')}
                                 <tr className="code-line added">
                                   <td className="line-number">6</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-63')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-annotation">@Configuration</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-63')}
                                 <tr className="code-line added">
                                   <td className="line-number">7</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-64')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-keyword">public class</span> <span className="code-class">AppConfig</span> {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-64')}
                                 <tr className="code-line added">
                                   <td className="line-number">8</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-65')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-annotation">@Bean</span>
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-65')}
                                 <tr className="code-line added">
                                   <td className="line-number">9</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-66')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span><span className="code-keyword">public</span> <span className="code-type">RestTemplate</span> <span className="code-function">restTemplate</span>() {'{'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-66')}
                                 <tr className="code-line added">
                                   <td className="line-number">10</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-67')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">        </span><span className="code-keyword">return new</span> <span className="code-function">RestTemplate</span>();
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-67')}
                                 <tr className="code-line added">
                                   <td className="line-number">11</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-68')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-68')}
                                 <tr className="code-line added">
                                   <td className="line-number">12</td>
                                   <td className="line-comment-toggle">
-                                    <AddCommentButton />
+                                    <AddCommentButton onClick={() => handleLineClick('line-69')} />
                                   </td>
                                   <td className="line-sign">+</td>
                                   <td className="line-content">
                                     <span className="code-indent">    </span>{'}'}
                                   </td>
                                 </tr>
+                                {renderNewCommentInput('line-69')}
                               </tbody>
                             </table>
                           </div>
@@ -2479,7 +2548,6 @@ export default function PRDetailClient() {
                     </>
                   )}
                 </div>
-              </div>
               </div>
             </div>
             </div>

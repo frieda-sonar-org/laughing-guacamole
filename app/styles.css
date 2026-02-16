@@ -1452,7 +1452,7 @@ body {
     height: 100%;
     opacity: 0;
     transition: opacity var(--transition-fast);
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .code-line:has(.line-number:hover) .add-comment-btn,
@@ -1741,12 +1741,22 @@ body {
     transform: rotate(-90deg);
 }
 
+/* Review Dropdown Overlay */
+.review-dropdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
 /* Review Dropdown Panel */
 .review-dropdown-panel {
     position: absolute;
     top: calc(100% + 8px);
-    right: 0;
-    background-color: #2d3139;
+    left: 0;
+    background-color: var(--color-sidebar-bg);
     border-radius: 8px;
     width: 380px;
     box-shadow: var(--shadow-xl);
@@ -1884,6 +1894,22 @@ body {
 
 .btn-review-submit:hover {
     background-color: var(--color-btn-primary-hover);
+}
+
+.btn-review-cancel {
+    background: none;
+    border: none;
+    color: #9fa9ed;
+    padding: 8px 16px;
+    cursor: pointer;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity var(--transition-base);
+}
+
+.btn-review-cancel:hover {
+    opacity: 0.8;
 }
 
 /* Responsive */
